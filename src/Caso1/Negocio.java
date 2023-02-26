@@ -1,12 +1,16 @@
 package Caso1;
 
 /**
- * Caso de estudio 1 
+ * <h1>Caso de estudio 1</h1>
  * 
- * Se neceistan calcular los numeros hexagonales, Los primeros n鷐eros hexagonales son:
+ * Se necesitan calcular los numeros hexagonales, Los primeros n煤meros hexagonales son:
  * 		1, 6, 15, 28, 45, 66, 91, 120, 153, 190, 231, 276, 325, 378, 435, 496, 561, 630, 703, 780, 861, 946
- * 
- * @author 34602
+ * Para ello se realizar谩 su b煤squeda de tres formas distintas, mediante:
+ * 	- La aplicaci贸n directa de la f贸rmula.
+ * 	- La aplicaci贸n del m茅todo recursivo.
+ * 	- La aplicaci贸n del m茅todo iterativo.
+ *
+ * @author Paulino
  * @version 0.1
  *
  */
