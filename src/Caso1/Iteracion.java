@@ -1,6 +1,6 @@
 package Caso1;
 /**
- * <h1>Aplicación del método iterativo.</h1>
+ * <h1>Aplicacion del metodo iterativo.</h1>
  * @author German P.
  *
  */

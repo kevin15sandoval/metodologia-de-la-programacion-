@@ -39,7 +39,7 @@ public interface Interfaz {
 	public static void finPrograma() {	
 		System.out.println();
 		System.out.println("Fin del programa!");
-		System.out.println( usuario + " Gracias por usar nuestro programa de Numeros Hexagonales.");
+		System.out.println( usuario + " gracias por usar nuestro programa de Numeros Hexagonales.");
 		System.exit(0);
 	}
 	
