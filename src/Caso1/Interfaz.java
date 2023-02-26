@@ -16,9 +16,9 @@ public interface Interfaz {
 	String usuario = System.getProperty("user.name");
 	public static void interfaz() {}
 	public static void bienvenida() {
-		System.out.println("······································································");
-		System.out.printf("··   Bienvenido %s al primer caso. - Numeros Hexagonales ···\n", usuario);
-		System.out.println("······································································\n");        
+		System.out.println("******************************************************************************************************************************");
+		System.out.printf("**   Bienvenido %s al primer caso. - Numeros Hexagonales ***\n", usuario);
+		System.out.println("******************************************************************************************************************************\n");        
 	}
 	public static int pedirOpcion() {
 		int entrada = 0;		

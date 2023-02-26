@@ -3,23 +3,23 @@ package Caso1;
 import java.util.Scanner;
 
 /**
- * <h1>Prácticas. Caso de estudio 1.</h1>
+ * <h1>Practicas. Caso de estudio 1.</h1>
  * <p>
  *     <h2>Problema.</h2>
  *     <p>
- *         Un número hexagonal es un número poligonal que representa un hexágono. La expresión para calcular el n-ésimo número hexagonal es
+ *         Un numero hexagonal es un numero poligonal que representa un hexagono. La expresion para calcular el n-esimo numero hexagonal es
  *         <div>
  *             <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5934056aa3c555c0656808428d27b21e673861b0" alt="">
  *         </div>
- *         Otra forma de obtener el enésimo número hexagonal n también puede expresarse a través de la siguiente suma:
+ *         Otra forma de obtener el enesimo numero hexagonal n tambien puede expresarse a traves de la siguiente suma:
  *         <div>
  *             <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/91a4c4d6f5dfd958b0010695ced89828bea54009" alt="">
  *         </div>
  *         Se pide:
- *         – Determinar la relación de recurrencia correspondiente a la ecuación (2).
- *         – Determinar teóricamente la complejidad de los tres algoritmos.
- *         – Implementar los tres algoritmos en un programa en Java.
- *         – Determinar empíricamente el tiempo de ejecución de los tres algoritmos como función de n.
+ *         - Determinar la relacion de recurrencia correspondiente a la ecuacion (2).
+ *         - Determinar teoricamente la complejidad de los tres algoritmos.
+ *         - Implementar los tres algoritmos en un programa en Java.
+ *         - Determinar empiricamente el tiempo de ejecucion de los tres algoritmos como funcion de n.
  *     </p>
  * </p>
  *
@@ -39,7 +39,7 @@ public class Presentacion {
         opcion = Interfaz.pedirOpcion();        
     	try {
         	if ( opcion != 4 ) {
-        		System.out.println("Introduce qué número hexagonal quieres calcular: ");
+        		System.out.println("Introduce que numero hexagonal quieres calcular: ");
             	@SuppressWarnings("resource")
     			Scanner dato = new Scanner(System.in);
             	numero = dato.nextInt();
@@ -56,15 +56,15 @@ public class Presentacion {
         }        
     }
     public static void opcion1(int entrada) {
-    	System.out.println("Aplicación del método directo, mediante fórmula:");
+    	System.out.println("Aplicacion del metodo directo, mediante formula:");
         FormulaDirecta.formulaDirecta(entrada);        
     }
     public static void opcion2(int entrada) {
-    	System.out.println("Aplicación del método recursivo:");
+    	System.out.println("Aplicacion del metodo recursivo:");
         Recursivo.recursivo(entrada);        
     }
     public static void opcion3(int entrada) {
-    	System.out.println("Aplicación del método iterativo:");
+    	System.out.println("Aplicacion del metodo iterativo:");
         Iteracion.iteracion(entrada);        
     }
     public static void salir() {
