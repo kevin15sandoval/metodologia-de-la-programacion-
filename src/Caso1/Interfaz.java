@@ -42,7 +42,10 @@ public interface Interfaz {
 		System.out.println( usuario + " gracias por usar nuestro programa de Numeros Hexagonales.");
 		System.exit(0);
 	}
-	
+	public static double tiempoEjecucion() {
+		double timer = System.nanoTime();
+		return timer;
+	}
 	public static void opcionNoExiste() {
 		System.out.println();
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

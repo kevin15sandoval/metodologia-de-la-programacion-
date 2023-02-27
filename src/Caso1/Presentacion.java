@@ -57,15 +57,21 @@ public class Presentacion {
     }
     public static void opcion1(int entrada) {
     	System.out.println("Aplicacion del metodo directo, mediante formula:");
-        FormulaDirecta.formulaDirecta(entrada);        
+        System.out.println(FormulaDirecta.formulaDirecta(entrada)); 
+        System.out.print(Interfaz.tiempoEjecucion());
+        System.out.println();
     }
     public static void opcion2(int entrada) {
     	System.out.println("Aplicacion del metodo recursivo:");
-        Recursivo.recursivo(entrada);        
+    	System.out.println(Recursivo.recursivo(entrada));  
+    	System.out.print(Interfaz.tiempoEjecucion());
+    	System.out.println();
     }
     public static void opcion3(int entrada) {
     	System.out.println("Aplicacion del metodo iterativo:");
-        Iteracion.iteracion(entrada);        
+    	System.out.println(Iteracion.iteracion(entrada));
+    	System.out.print(Interfaz.tiempoEjecucion());
+    	System.out.println();
     }
     public static void salir() {
     	Interfaz.finPrograma();    
