@@ -27,6 +27,9 @@ import java.util.Scanner;
  * @version 0.1
  */
 public class Presentacion {
+	static double a = 0;
+	static double b = 0;
+	
     public static void main(String[] args) {
         do {
         	inicioPrograma();
@@ -55,23 +58,32 @@ public class Presentacion {
         	System.out.println("Error: " + e);
         }        
     }
-    public static void opcion1(int entrada) {
+    public static void opcion1(int entrada) {    	
+    	a = Interfaz.tiempoEjecucion();
+    	System.out.println(a);
     	System.out.println("Aplicacion del metodo directo, mediante formula:");
-        System.out.println(FormulaDirecta.formulaDirecta(entrada)); 
-        System.out.print(Interfaz.tiempoEjecucion());
+        System.out.println(FormulaDirecta.formulaDirecta(entrada));
+        b = Interfaz.tiempoEjecucion();
+        System.out.println(b);
         System.out.println();
+        System.out.println("Resultado final: "+ (b-a) + "ns");
     }
     public static void opcion2(int entrada) {
+    	a = Interfaz.tiempoEjecucion();
     	System.out.println("Aplicacion del metodo recursivo:");
     	System.out.println(Recursivo.recursivo(entrada));  
-    	System.out.print(Interfaz.tiempoEjecucion());
-    	System.out.println();
+    	System.out.print(Interfaz.tiempoEjecucion());b = Interfaz.tiempoEjecucion();
+        System.out.println(b);
+        System.out.println();
+        System.out.println("Resultado final: "+ (b-a) + "ns");
     }
     public static void opcion3(int entrada) {
     	System.out.println("Aplicacion del metodo iterativo:");
     	System.out.println(Iteracion.iteracion(entrada));
-    	System.out.print(Interfaz.tiempoEjecucion());
-    	System.out.println();
+    	System.out.print(Interfaz.tiempoEjecucion());b = Interfaz.tiempoEjecucion();
+        System.out.println(b);
+        System.out.println();
+        System.out.println("Resultado final: "+ (b-a) + "ns");
     }
     public static void salir() {
     	Interfaz.finPrograma();    
