@@ -14,7 +14,7 @@ public class Recursivo {
 		        return 1;
 		    }
 		 //caso recursivo    
-		 return 4 * valorEntrada + 1 + recursivo(valorEntrada - 1);
+		 return  recursivo(valorEntrada - 1) + 4 *valorEntrada - 3 ;
 	}
 	
 }
