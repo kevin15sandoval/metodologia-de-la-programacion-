@@ -6,15 +6,9 @@ package Caso1;
  */
 public class Iteracion {
 	public static int iteracion(int valorEntrada) {
-		
-		System.out.println("Dentro de la opcion de iteracion.");
-
-		System.out.println("*****************************************************************");
-        System.out.println("Este programa calcula un número hexagonal de forma iterativa:");
-        System.out.println("*****************************************************************\n");
 
         int acumulador = 0;	//Acumula los resultados del sumatorio
-        int resultado;		//Contendra el resultado final
+        int resultado = 0;		//Contendra el resultado final
 
         for (int i = 0 ; i <= (valorEntrada-1); i++) {
             acumulador += (4 * i) + 1;
