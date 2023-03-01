@@ -22,6 +22,7 @@ public class Iteracion {
 
         resultado = acumulador;
 
-        System.out.printf("El numero hexagonal con indice %d es %d.\n", valorEntrada, resultado);
+        System.out.printf("El numero hexagonal con indice %d es ", valorEntrada, resultado);
+        return resultado;
 	}
 }
