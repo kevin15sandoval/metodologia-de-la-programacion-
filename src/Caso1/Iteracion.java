@@ -1,14 +1,12 @@
 package Caso1;
 /**
- * <h1>Aplicacion del metodo iterativo.</h1>
+ * Aplicacion del metodo iterativo.
  * 
- * <p>
  * 		Se crea una variable "acumulador" que almacena la suma sucesiva del sumatorio.
  * 		Se crea una variable "resultado" que almacena el valor final del sumatorio.
  * 
  * 		El for itera las veces necesarias, sustituyendo el valor de acumulador.
  * 		Al finalizar, el valor de acumulador se asigna a la variable "resultado".
- * </p>
  * 
  * @author German P.
  */

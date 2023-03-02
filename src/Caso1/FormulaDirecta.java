@@ -1,9 +1,7 @@
 package Caso1;
 /**
- * <h1>Aplicacion de la formula directa.</h1>
- * <p>
- * 		
- * </p>
+ * Aplicacion de la formula directa.
+ * 
  * @author Andres D.
  *
  */

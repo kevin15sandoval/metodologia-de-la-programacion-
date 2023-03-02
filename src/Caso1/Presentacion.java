@@ -3,30 +3,19 @@ package Caso1;
 import java.util.Scanner;
 
 /**
- * <h1>Practicas. Caso de estudio 1.</h1>
- * <p>
- *     <h2>Problema.</h2>
- *     <p>
+ * Practicas. Caso de estudio 1.
+ * 
+ * Problema.
  *         Un numero hexagonal es un numero poligonal que representa un hexagono. La expresion para calcular el n-esimo numero hexagonal es
- *         <div>
+ *
  *             <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/5934056aa3c555c0656808428d27b21e673861b0" alt="">
- *         </div>
  *         Otra forma de obtener el enesimo numero hexagonal n tambien puede expresarse a traves de la siguiente suma:
- *         <div>
  *             <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/91a4c4d6f5dfd958b0010695ced89828bea54009" alt="">
- *         </div>
  *         Se pide:
  *         - Determinar la relacion de recurrencia correspondiente a la ecuacion (2).
  *         - Determinar teoricamente la complejidad de los tres algoritmos.
  *         - Implementar los tres algoritmos en un programa en Java.
  *         - Determinar empiricamente el tiempo de ejecucion de los tres algoritmos como funcion de n.
- *     </p>
- *     <div>
- *     	<code>
- *     
- *     </code>
- *     </div>
- * </p>
  *
  * @author Paulino
  * @version 0.1
