@@ -21,6 +21,11 @@ import java.util.Scanner;
  *         - Implementar los tres algoritmos en un programa en Java.
  *         - Determinar empiricamente el tiempo de ejecucion de los tres algoritmos como funcion de n.
  *     </p>
+ *     <div>
+ *     	<code>
+ *     
+ *     </code>
+ *     </div>
  * </p>
  *
  * @author Paulino
@@ -60,7 +65,7 @@ public class Presentacion {
     }
     public static void opcion1(int entrada) {    	
     	a = Interfaz.tiempoEjecucion();
-    	System.out.println(a);
+    	//System.out.println(a);
     	System.out.println("Aplicacion del metodo directo, mediante formula:");
         System.out.println(FormulaDirecta.formulaDirecta(entrada));
         b = Interfaz.tiempoEjecucion();
