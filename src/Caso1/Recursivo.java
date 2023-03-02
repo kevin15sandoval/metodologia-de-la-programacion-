@@ -1,6 +1,6 @@
 package Caso1;
 /**
- * <h1>Aplicación del método recursivo.</h1>ç
+ * <h1>Aplicacion del metodo recursivo.</h1>
  * @author Kevin A.
  * 
  * paso: 1: establecemos el caso base que sera cuando el valor de la entrada es 1, por lo que el return sera 1 ya que es el caso base 
