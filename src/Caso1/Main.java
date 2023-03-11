@@ -20,7 +20,7 @@ import java.util.Scanner;
  * @author Paulino
  * @version 0.1
  */
-public class Presentacion {
+public class Main {
 	static double a = 0;
 	static double b = 0;
 	

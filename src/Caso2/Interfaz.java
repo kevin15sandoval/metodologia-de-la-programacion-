@@ -4,7 +4,7 @@
  * Contenido.
  * ===============================
  */
-package Caso1;
+package Caso2;
 
 import java.util.Scanner;
 
@@ -14,20 +14,22 @@ import java.util.Scanner;
  */
 public interface Interfaz {
 	String usuario = System.getProperty("user.name");
+	public static String FICHERO_DATOS = "InversionsTest_12.dat";	
 	public static void interfaz() {}
 	public static void bienvenida() {
 		System.out.println("******************************************************************************************************************************");
-		System.out.printf("**   Bienvenido %s al primer caso. - Numeros Hexagonales ***\n", usuario);
+		System.out.printf("**   Bienvenido %s al segundo caso. - Numeros de inversiones ***\n", usuario);
 		System.out.println("******************************************************************************************************************************\n");        
 	}
 	public static int pedirOpcion() {
 		int entrada = 0;		
 		/* ---------------------------------------------------------------- */
 		System.out.println("Selecciona una de las opciones disponibles: ");
-		System.out.println("1- Por formula.");
-        System.out.println("2- Por recursividad.");
-        System.out.println("3- Por iteracion.");
-        System.out.println("4- Finalizar programa.");
+		System.out.println("1- Andres.");
+        System.out.println("2- German.");
+        System.out.println("3- Kevin.");
+        System.out.println("4- Paulino.");        
+        System.out.println("5- Finalizar programa.");
         System.out.print("");
         /* ---------------------------------------------------------------- */
         @SuppressWarnings("resource")		
