@@ -20,12 +20,11 @@ import java.util.Scanner;
  * 		- Nuestra clasificación (la referencia): 1, 2, …, n
  * 		- Otra clasificación: a1, a2, …, an
  * 		- Las canciones i and j están invertidas (“descolocadas”) si i < j, pero ai > aj
- * Por tanto, Podemos usar como métrica de semejanza (o diferencia) el número de inversiones entre las dos clasificaciones, ver el ejemplo siguiente:
- * 
- * <img src="
+ * Por tanto ver el ejemplo siguiente:
+ * @see<a href="https://campusvirtual.uclm.es/pluginfile.php/5769295/mod_resource/content/28/CasoEstudio2_MP_2022_23.pdf" target="_blank" rel="noopener noreferrer">Recuento de inversion de un array - Explicación completa del problema.</a>
  * 
  * Problema.
- *    Dada una permutación contar el número de inversiones
+ *    Dada una permutación contar el número de inversiones.
  *
  * @author Paulino
  * @version 0.1
@@ -40,62 +39,84 @@ public class Main {
         }while(true);
         	
     }
-    public static void inicioPrograma() {    	
+    public static void inicioPrograma() {
+
+    	// Variables necesarias para interactuar con el usuario
+    	int[] dEntrada = null;
     	int numero = 0, opcion = 0;
+    	
+    	// ------------------------------------------------------------------
+    	// Mensaje de bienvenida.
         Interfaz.bienvenida();
-        opcion = Interfaz.pedirOpcion();        
+        // Selecciónar opcion del programa.
+        opcion = Interfaz.pedirOpcion();
+        // Operar con la opcion seleccionada.
+    	// ------------------------------------------------------------------        
     	try {
         	if ( opcion != 5 ) {
-        		System.out.println("Introduce que numero hexagonal quieres calcular: ");
-            	@SuppressWarnings("resource")
-    			Scanner dato = new Scanner(System.in);
-            	numero = dato.nextInt();
+            	// ------------------------------------------------------------------
+            	// Cargamos los datos de entrada al programa
+            	System.out.println("Cargando los datos de entrada ... ");
+            	Interfaz.animacion();
+            	// ------------------------------------------------------------------
+        		dEntrada = Datos.dataEntry();
         	}
             switch (opcion) {
-            	case 1 -> opcion1(); // Descomentar andres()
-            	case 2 -> opcion2(); // descomentar german()
-            	case 3 -> opcion3(); // Descomentar kevin()
-            	case 4 -> opcion4(); // paulino()
+            	case 0 -> opcion0(dEntrada); // No está pedido pero así lo practicamos y vemos las diferencias de tiempos
+            	case 1 -> opcion1(dEntrada); // Descomentar andres()
+            	case 2 -> opcion2(dEntrada); // descomentar german()
+            	case 3 -> opcion3(dEntrada); // Descomentar kevin()
+            	case 4 -> opcion4(dEntrada); // paulino()
             	case 5 -> salir();
             	default -> opcionNoExiste();
             }
         } catch( Exception e) {
         	System.out.println("Error: " + e);
+        	System.out.println();
+        	String sDirectorioTrabajo = System.getProperty("user.dir");
+        	System.out.println("El directorio de trabajo es " + sDirectorioTrabajo);
+        	System.exit(1);
         }        
     }
-    public static void opcion1() {    	
+    private static void opcion0(int[] d) {
     	a = Interfaz.tiempoEjecucion();
-    	// Andres.mergesort();
+    	System.out.println(FuerzaBruta.fuerzaBruta(d));
+        b = Interfaz.tiempoEjecucion();  
+        System.out.println();
+        System.out.println("Resultado final: "+ (b-a) + "ns");    	
+	}
+	private static void opcion1(int[] d) {    	
+    	a = Interfaz.tiempoEjecucion();
+    	// Andres.mergesort(d);
         b = Interfaz.tiempoEjecucion();  
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
-    public static void opcion2() {
+    private static void opcion2(int[] d) {
     	a = Interfaz.tiempoEjecucion();
-    	// German.mergesort();
+    	// German.mergesort(d);
         b = Interfaz.tiempoEjecucion();
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
-    public static void opcion3() {
+    private static void opcion3(int[] d) {
     	a = Interfaz.tiempoEjecucion();
-    	// Kevin.mergesort();
+    	// Kevin.mergesort(d);
     	b = Interfaz.tiempoEjecucion();
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
-    public static void opcion4() {
+    private static void opcion4(int[] d) {
     	a = Interfaz.tiempoEjecucion();
-    	// Paulino.mergesort();
+    	Paulino.mergesort(d);
     	b = Interfaz.tiempoEjecucion(); 
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
-    public static void salir() {
+    private static void salir() {
     	Interfaz.finPrograma();    
 	}
-    public static void opcionNoExiste() {
+    private static void opcionNoExiste() {
     	Interfaz.opcionNoExiste();    
-	}
-    
+	}    
 }

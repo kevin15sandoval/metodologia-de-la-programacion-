@@ -1,9 +1,8 @@
 package Caso2;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -22,24 +21,28 @@ import java.util.Scanner;
 
 
 public class Datos {
-    public static ArrayList<String> data() {
-        File archivo = new File(FICHERO_DATOS);
-        ArrayList<String> lineas = new ArrayList<>();
-        try {
-            FileInputStream fis = new FileInputStream(archivo);
-            Scanner scanner = new Scanner(fis);
-            while (scanner.hasNextLine()) {
-                lineas.add(scanner.nextLine());
-            }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        String[] array = lineas.toArray(new String[lineas.size()]);
-        System.out.println("Contenido del archivo:");
-        for (String linea : array) {
-            System.out.println(linea);
-        }
-		return lineas;
+    public static int[] dataEntry() {
+    	// Fichero de entrada
+    	File file = new File(Interfaz.FICHERO_DATOS);
+    	// Scanner de datos
+    	Scanner sc = null;
+    	
+    	try {
+    		sc = new Scanner(file);
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Revise el nombre del fichero en Interfaz.java");
+    		e.printStackTrace();
+    	}
+    	// Leemos el primer renglon y declaramos el tamaño del array que queremos.
+    	int size = sc.nextInt();
+    	// Creamos el array con el tamaño detectado
+    	int[] arrayDatos = new int[size];
+    	// Rellenamos el array
+    	for	( int i = 0; i < size; i++ ) {
+    		arrayDatos[i] = sc.nextInt(); 
+    	}
+    	sc.close();
+    	System.out.println(Arrays.toString(arrayDatos));
+    	return arrayDatos;
     }
 }
