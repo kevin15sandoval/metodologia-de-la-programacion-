@@ -8,6 +8,7 @@ package Caso2;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Paulino
@@ -16,7 +17,7 @@ import java.util.Scanner;
 public interface Interfaz {
 	String usuario = System.getProperty("user.name");
 	// Fichero con los datos de entrada	
-	public static String FICHERO_DATOS = "src/Caso2/Data/InversionsTest_6.dat";
+	public static String FICHERO_DATOS = "src/Caso2/Data/InversionsTest_12.dat";
 	// Metodos de la interfaz
 	public static void interfaz() {}
 	public static void bienvenida() {
@@ -51,6 +52,7 @@ public interface Interfaz {
 	}
 	public static double tiempoEjecucion() {
 		double timer = System.nanoTime();
+
 		return timer;
 	}
 	public static void opcionNoExiste() {
@@ -76,7 +78,7 @@ public interface Interfaz {
 				   				
 				   								
 				   																""");
-		String anim= "|··>"; for (int x =0 ; x < 10 ; x++) { 
+		String anim= "|··>"; for (int x =0 ; x < 11 ; x++) { 
 			String data = "\t" + anim.charAt(x % anim.length()) + " " + x ; System.out.write(data.getBytes()); Thread.sleep(100);		
 		}
 		System.out.println();
