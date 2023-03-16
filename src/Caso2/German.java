@@ -1,16 +1,13 @@
 package Caso2;
 
 public class German {
-
-    public static void main(String[] args) {
-        
-    }
     
-    public int[] mergesort (int[] d){
+    public int mergesort (int[] d){
         
-        //TODO
+        int numInversiones = 0;
 
-        //Esto está así para que compile, cambiar al final.
-        return d;
+        
+
+        return numInversiones;
     }
 }

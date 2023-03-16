@@ -20,7 +20,7 @@ public class Paulino {
 		 *  Nos dan como base los datos de entrada con los que trabajaremos. --> int[] datos.
 		 *  Y una copia del array --> int[] copy.
 		 *
-		 * Buscamos y resolvemos el caso base: Tama�o de ejecuci�n <= 1
+		 * Buscamos y resolvemos el caso base: Tamanio de ejecucion <= 1
 		 */
 		if (finD <= inicio ) {
 			return 0;
