@@ -3,10 +3,10 @@ package Caso2;
 import java.util.Arrays;
 
 /**
- * Clase que usa la ordenación por combinación.
+ * Clase que usa la ordenaciï¿½n por combinaciï¿½n.
  * 
- * Básicamente, cada elemento del array dato, 'datos', cuenta todos los elementos más que a su izquierda y agrega el conteo a la salida.
- * Toda la magia ocurre dentro de la función de combinación de clasificación de combinación.
+ * Bï¿½sicamente, cada elemento del array dato, 'datos', cuenta todos los elementos mï¿½s que a su izquierda y agrega el conteo a la salida.
+ * Toda la magia ocurre dentro de la funciï¿½n de combinaciï¿½n de clasificaciï¿½n de combinaciï¿½n.
  */
 /**
  * @version 0.2
@@ -19,19 +19,19 @@ public class Paulino {
 		 *  Nos dan como base los datos de entrada con los que trabajaremos. --> int[] datos.
 		 *  Y una copia del array --> int[] copy.
 		 *
-		 * Buscamos y resolvemos el caso base: Tamaño de ejecución <= 1
+		 * Buscamos y resolvemos el caso base: Tamaï¿½o de ejecuciï¿½n <= 1
 		 */
 		if (finD <= inicio ) {
 			return 0;
 		}
 		/*
 		 *   Encontramos el punto medio del problema.
-		 *   Usamos la técnica de bit shifting: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op3.html
+		 *   Usamos la tï¿½cnica de bit shifting: https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op3.html
 		 *   
 		 *   Comenzamos restando inicio de fin para obtener la longitud del intervalo. Luego, este valor, se divide entre 2 mediante el operador '>>', que realiza un despllazamiento
-		 *   hacia la derecha en la representación binaria del número, lo que es equivalente a una división por 2^n, donde 'n' es el número de bits que se desplazan.
+		 *   hacia la derecha en la representaciï¿½n binaria del nï¿½mero, lo que es equivalente a una divisiï¿½n por 2^n, donde 'n' es el nï¿½mero de bits que se desplazan.
 		 *   
-		 *   El resultado se suma a inicio para obtener un valor medio, que se almacena en 'mitad', un entero que representa el índice medio del  intérvalo del array datos.
+		 *   El resultado se suma a inicio para obtener un valor medio, que se almacena en 'mitad', un entero que representa el ï¿½ndice medio del  intï¿½rvalo del array datos.
 		 */
 		int mitad = ( inicio + ((finD - inicio ) >> 1 ));
 		int inversionEncontrada = 0;
@@ -69,7 +69,7 @@ public class Paulino {
 			aux[i++] = datos[inicio++];
 		}
 		/*
-		 * No es necesario copiar la segunda mitad, pues los numeros restantes están en su posición correcta en el array copy.
+		 * No es necesario copiar la segunda mitad, pues los numeros restantes estï¿½n en su posiciï¿½n correcta en el array copy.
 		 * 
 		 *  Copia el nuevo orden de nuevo  al array original 
 		 */
