@@ -64,9 +64,9 @@ public class Main {
         	}
             switch (opcion) {
             	case 0 -> opcion0(dEntrada); // No está pedido pero así lo practicamos y vemos las diferencias de tiempos
-            	case 1 -> opcion1(dEntrada); // Descomentar andres()
+            	case 1 -> opcion1(dEntrada); // andres()
             	case 2 -> opcion2(dEntrada); // descomentar german()
-            	case 3 -> opcion3(dEntrada); // Descomentar kevin()
+            	case 3 -> opcion3(dEntrada); // kevin()
             	case 4 -> opcion4(dEntrada); // paulino()
             	case 5 -> salir();
             	default -> opcionNoExiste();
@@ -88,7 +88,7 @@ public class Main {
 	}
 	private static void opcion1(int[] d) {    	
     	a = Interfaz.tiempoEjecucion();
-    	// Andres.mergesort(d);
+    	Andres.mergesort(d);
         b = Interfaz.tiempoEjecucion();  
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
@@ -102,7 +102,10 @@ public class Main {
     }
     private static void opcion3(int[] d) {
     	a = Interfaz.tiempoEjecucion();
-    	// Kevin.mergesort(d);
+    	int ini=0;
+    	int fin=d.length-1;    	
+    	long resultado = kevin.mergeSort( d, ini, fin );
+    	System.out.println("El nº de inversiones encontradas es: " + resultado);
     	b = Interfaz.tiempoEjecucion();
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");

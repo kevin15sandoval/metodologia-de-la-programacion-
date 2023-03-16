@@ -3,28 +3,12 @@ package Caso2;
 import java.lang.reflect.Array;
 import java.util.Scanner;
 
-public class kevin {
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		 Scanner sc = new Scanner(System.in);
-	      System.out.print("Ingrese el tamanoaño del array: ");
-	      int tamano = sc.nextInt();
-	      
-	      int[] numeros = new int[tamano];
-	      
-	      for (int i = 0; i < tamano; i++) {
-	         System.out.print("Ingrese el valor para la posición " + i + ": ");
-	         numeros[i] = sc.nextInt();
-	      }
-	      long inversiones = mergeSort(numeros,0,numeros.length-1);
-	      System.out.println("Hay un total de " + inversiones + " inversiones en este array");
-	}
-	
-	/*
+public class kevin {	
+		/**
 	     *  Es la función de "división" que divide el array en dos mitades y 
 	     * llama recursivamente a mergeSort en ambas mitades hasta que el tamanoaño de la mitad es uno.
 	     */
-	    private static long mergeSort(int[] array,  int izquierda, int derecha) {
+	    public static long mergeSort(int[] array,  int izquierda, int derecha) {
 	    	//creamos un array temporal que luego nos ayudara para ordenar el array original por ello su tmañano es igual al del array
 	    	int[] temporal = new int[array.length];
 	       //Inicializamos el contador a 0 porque este nos llevara la cuenta del numeor de inversores en nuetsro array
