@@ -112,10 +112,10 @@ public class Main {
     }
     private static void opcion4(int[] d) {
     	a = Interfaz.tiempoEjecucion();
-    	int[] cp = Arrays.copyOf(d, d.length);
+    	
     	int ini= 0, mid = d.length-1;
-    	int r = Paulino.mergesort(d, cp, ini, mid);
-    	System.out.println("Inversiones contadas: " + r);
+    	int r = Paulino.mergesort(d, ini, mid);
+    	System.out.println("Inversiones contadas: " + (r-1));
     	b = Interfaz.tiempoEjecucion(); 
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");

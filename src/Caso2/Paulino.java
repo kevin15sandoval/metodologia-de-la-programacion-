@@ -14,7 +14,8 @@ import java.util.Arrays;
  */
 public class Paulino {
 
-	public static int mergesort(int[] datos, int[] copia, int inicio, int finD) {
+	public static int mergesort(int[] datos, int inicio, int finD) {
+		int[] copia = Arrays.copyOf(datos, datos.length);
 		/*
 		 *  Nos dan como base los datos de entrada con los que trabajaremos. --> int[] datos.
 		 *  Y una copia del array --> int[] copy.
@@ -36,17 +37,16 @@ public class Paulino {
 		int mitad = ( inicio + ((finD - inicio ) >> 1 ));
 		int inversionEncontrada = 0;
 		/*
-		 * Dividimos recursivamente las ejecuciones en dos mitrades hasta que las divisiones sean <= 1.
+		 * Dividimos recursivamente las ejecuciones en dos mitades hasta que las divisiones sean <= 1.
 		 * Luego se unen y devuelven al array original
 		 */
 
 		// Dividimos la mitad izquierda
-		inversionEncontrada += mergesort(datos, copia , inicio, mitad );
+		inversionEncontrada += mergesort(datos , inicio, mitad );
 		// Dividimos la mitad derecha
-		inversionEncontrada += mergesort(datos, copia , mitad +1 , finD );
+		inversionEncontrada += mergesort(datos , mitad +1 , finD );
 		// Unimos las dos mitades recorridas
 		inversionEncontrada +=merge(datos, copia, inicio, mitad, finD);
-		
 		// Devolvemos las inversiones realizadas
 		return inversionEncontrada;
 	}
@@ -62,7 +62,7 @@ public class Paulino {
 			} else {
 				aux[i++]=datos[mitad++];
 				inversionEncontrada += (mid - inicio +1);
-			}				
+			}			
 		}
 		// Copiamos los elementos restantes que ya vienen ordenados en el array
 		while ( inicio <= mid ) {
@@ -76,6 +76,7 @@ public class Paulino {
 		for ( inicio = min; inicio <= max; inicio++  ) {
 			datos[inicio] = aux[inicio];
 		}
+
 		return inversionEncontrada;
 	}
 	
