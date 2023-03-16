@@ -2,7 +2,9 @@ package Caso2;
 
 public class German {
 
-    main
+    public static void main(String[] args) {
+        
+    }
     
     public int[] mergesort (int[] d){
         
