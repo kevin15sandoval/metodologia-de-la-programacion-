@@ -95,7 +95,12 @@ public class Main {
     }
     private static void opcion2(int[] d) {
     	a = Interfaz.tiempoEjecucion();
-    	// German.mergesort(d);
+
+		int posIni = 0;
+		int posFin = d.length-1;
+    	int resultado = German.mergesort(d, posIni, posFin);
+		System.out.println("Inversiones contadas: " + (resultado-1));
+
         b = Interfaz.tiempoEjecucion();
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");

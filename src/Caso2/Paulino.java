@@ -3,10 +3,10 @@ package Caso2;
 import java.util.Arrays;
 
 /**
- * Clase que usa la ordenaci�n por combinaci�n.
+ * Clase que usa la ordenacion por combinacion.
  * 
- * B�sicamente, cada elemento del array dato, 'datos', cuenta todos los elementos m�s que a su izquierda y agrega el conteo a la salida.
- * Toda la magia ocurre dentro de la funci�n de combinaci�n de clasificaci�n de combinaci�n.
+ * Basicamente, cada elemento del array dato, 'datos', cuenta todos los elementos mas que a su izquierda y agrega el conteo a la salida.
+ * Toda la magia ocurre dentro de la funcion de combinacion de clasificacion de combinacion.
  */
 /**
  * @version 0.2
@@ -20,7 +20,7 @@ public class Paulino {
 		 *  Nos dan como base los datos de entrada con los que trabajaremos. --> int[] datos.
 		 *  Y una copia del array --> int[] copy.
 		 *
-		 * Buscamos y resolvemos el caso base: Tamanio de ejecucion <= 1
+		 * Buscamos y resolvemos el caso base: Tama�o de ejecuci�n <= 1
 		 */
 		if (finD <= inicio ) {
 			return 0;
