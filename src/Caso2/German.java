@@ -1,16 +1,24 @@
 package Caso2;
 
+/**
+ * Aplicacion del algoritmo mergesort a un array cualquiera desordenado.
+ * 
+ * La funcion mergesort devuelve un long con el numero de inversiones.
+ * 
+ * @author German P.
+ *
+ * @version 0.2
+ */
+
 public class German{
     
-    public static void mergesort (int[] array){
-        // I got it to return the sorted array but I don't know how to get the number of inversions by now
-        // I am having trouble locating them
+    public static long mergesort (int[] array){
 
         int inputLength = array.length;
 
-        // If the array have less than 2 elementos, it will be ordered
+        // If the array have less than 2 elements, it will be ordered
         if (inputLength <2){
-            return;
+            return 0;
         }
 
         // It obtains the median of the array
@@ -30,14 +38,10 @@ public class German{
             rightHalf[i-midIndex] = array[i];   // "i-midIndex" because if i put "i" it starts in midIndex (in the new array)
         }        
         
-        //It runs recursively until I have less than two elements on the arrays
-        mergesort(leftHalf);
-        mergesort(rightHalf);
-
-        merge(array, leftHalf, rightHalf);
+        return mergesort(leftHalf) + mergesort(rightHalf) + merge(array, leftHalf, rightHalf);
     }
 
-    private static void merge (int[] array, int[] leftHalf, int[] rightHalf){
+    private static long merge (int[] array, int[] leftHalf, int[] rightHalf){
 
         int leftSize = leftHalf.length;
         int rightSize = rightHalf.length;
@@ -46,6 +50,8 @@ public class German{
         int j = 0;  // "j" will run through the rightHalf
         int k = 0;  // "k" will run throught the merged array (final array)
 
+        long inversionsNum = 0;
+
         while (i < leftSize && j < rightSize) {  // It loops until we run out of elements in one of the two arrays
             if (leftHalf[i] <= rightHalf[j]) {  // If element in leftHalf is smaller, we put it on the merged array
                 array[k] = leftHalf[i];
@@ -53,6 +59,7 @@ public class German{
             }
             else {  // Otherwise, we put the element of rightHalf on the merged array
                 array[k] = rightHalf[j];
+                inversionsNum += leftSize -i;
                 j++;
             }
             k++;
@@ -71,5 +78,7 @@ public class German{
             j++;
             k++;
         }
+
+        return inversionsNum;
     }
 }

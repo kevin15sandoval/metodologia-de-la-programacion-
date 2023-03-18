@@ -1,8 +1,5 @@
 package Caso2;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 /**
  * <h1>Practicas. Caso de estudio 2.</h1>
  * <h2>Descripción del problema</h2>
@@ -44,7 +41,7 @@ public class Main {
 
     	// Variables necesarias para interactuar con el usuario
     	int[] dEntrada = null;
-    	int num = 0, opcion = 0;
+    	int opcion = 0;
     	
     	// ------------------------------------------------------------------
     	// Mensaje de bienvenida.
@@ -94,22 +91,12 @@ public class Main {
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
     private static void opcion2(int[] d) {
-    	a = Interfaz.tiempoEjecucion();
-
-		System.out.println("Este es el array inicial:");
+		long result = German.mergesort(d);
 		printArray(d);
-    	
-		German.mergesort(d);
-
-		System.out.println("Este es el array final:");
-		printArray(d);
-
-		// int resultado = 0;
-		// System.out.println("Inversiones contadas: " + (resultado-1));
-
-        // b = Interfaz.tiempoEjecucion();
-        // System.out.println();
-        // System.out.println("Resultado final: "+ (b-a) + "ns");
+		System.out.println("Inversiones contadas: " + (result));
+        b = Interfaz.tiempoEjecucion();
+        System.out.println();
+        System.out.println("Resultado final: "+ (b-a) + "ns");
     }
     private static void opcion3(int[] d) {
     	a = Interfaz.tiempoEjecucion();
@@ -138,10 +125,16 @@ public class Main {
     	Interfaz.opcionNoExiste();    
 	}
 	
+	// @German -> Este metodo le he creado yo, es por estetica para la opcion 2, se podria borrar sin problema
 	public static void printArray (int[] array){
-		System.out.printf("[ ");
+		System.out.printf("[");
 		for (int i = 0; i < array.length; i++) {
-			System.out.printf("%d ", array[i]);
+			if (i == array.length - 1) {
+				System.out.printf("%d", array[i]);	
+			}
+			else {
+			System.out.printf("%d, ", array[i]);
+			}
 		}
 		System.out.println("]");
 	}

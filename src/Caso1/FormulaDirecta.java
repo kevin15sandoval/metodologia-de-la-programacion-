@@ -5,8 +5,7 @@ package Caso1;
  * @author Andres D.
  *
  */
-import java.util.Locale;
-import java.util.Scanner;
+
 
 public class FormulaDirecta {
 	
