@@ -58,7 +58,7 @@ public interface Interfaz {
 	public static void opcionNoExiste() {
 		System.out.println();
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.printf(" \t %s la opcion que escribiste, no existe, vuelve a intentarlo de nuevo \n",usuario);
+		System.out.printf(" \t %s La opcion que escribiste, no existe, vuelve a intentarlo de nuevo \n",usuario);
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		Main.inicioPrograma();		
 	}
@@ -78,7 +78,7 @@ public interface Interfaz {
 				   				
 				   								
 				   																""");
-		String anim= "|··>"; for (int x =0 ; x < 11 ; x++) { 
+		String anim= "|ï¿½ï¿½>"; for (int x =0 ; x < 11 ; x++) { 
 			String data = "\t" + anim.charAt(x % anim.length()) + " " + x ; System.out.write(data.getBytes()); Thread.sleep(100);		
 		}
 		System.out.println();

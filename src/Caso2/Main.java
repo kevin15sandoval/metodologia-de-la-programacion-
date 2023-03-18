@@ -65,7 +65,7 @@ public class Main {
             switch (opcion) {
             	case 0 -> opcion0(dEntrada); // No está pedido pero así lo practicamos y vemos las diferencias de tiempos
             	case 1 -> opcion1(dEntrada); // andres()
-            	case 2 -> opcion2(dEntrada); // descomentar german()
+            	case 2 -> opcion2(dEntrada); // german()
             	case 3 -> opcion3(dEntrada); // kevin()
             	case 4 -> opcion4(dEntrada); // paulino()
             	case 5 -> salir();
@@ -96,14 +96,20 @@ public class Main {
     private static void opcion2(int[] d) {
     	a = Interfaz.tiempoEjecucion();
 
-		int posIni = 0;
-		int posFin = d.length-1;
-    	int resultado = German.mergesort(d, posIni, posFin);
-		System.out.println("Inversiones contadas: " + (resultado-1));
+		System.out.println("Este es el array inicial:");
+		printArray(d);
+    	
+		German.mergesort(d);
 
-        b = Interfaz.tiempoEjecucion();
-        System.out.println();
-        System.out.println("Resultado final: "+ (b-a) + "ns");
+		System.out.println("Este es el array final:");
+		printArray(d);
+
+		// int resultado = 0;
+		// System.out.println("Inversiones contadas: " + (resultado-1));
+
+        // b = Interfaz.tiempoEjecucion();
+        // System.out.println();
+        // System.out.println("Resultado final: "+ (b-a) + "ns");
     }
     private static void opcion3(int[] d) {
     	a = Interfaz.tiempoEjecucion();
@@ -130,5 +136,13 @@ public class Main {
 	}
     private static void opcionNoExiste() {
     	Interfaz.opcionNoExiste();    
-	}    
+	}
+	
+	public static void printArray (int[] array){
+		System.out.printf("[ ");
+		for (int i = 0; i < array.length; i++) {
+			System.out.printf("%d ", array[i]);
+		}
+		System.out.println("]");
+	}
 }

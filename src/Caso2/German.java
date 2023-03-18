@@ -1,67 +1,75 @@
 package Caso2;
 
-import java.util.Arrays;
-
 public class German{
     
-    public static int mergesort (int[] datos, int inicio, int finD){
+    public static void mergesort (int[] array){
+        // I got it to return the sorted array but I don't know how to get the number of inversions by now
+        // I am having trouble locating them
 
-        //Crea una copia de "d", con el tamanio de "d"
-        int [] copia = Arrays.copyOf(datos, datos.length);
+        int inputLength = array.length;
 
-        // Caso Base
-        if (finD <= inicio){
-            return 0;
+        // If the array have less than 2 elementos, it will be ordered
+        if (inputLength <2){
+            return;
         }
 
-        int mitad = ( inicio + ((finD - inicio ) >> 1 ));
+        // It obtains the median of the array
+        int midIndex = array.length / 2;
 
-        int numInversiones = 0;
+        // It creates the two empty sub-arrays
+        int[] leftHalf = new int [midIndex]; // From 0 to mid
+        int[] rightHalf = new int [inputLength - midIndex]; // From midIndex+1 to inputLength
 
-        // Va dividiendo mitad izquierda
-        numInversiones += mergesort(datos, inicio, mitad);
+        // It fills the leftHalf array from the original one
+        for (int i = 0; i < midIndex; i++) {
+            leftHalf[i] = array[i];
+        }
 
-        // Va dividiendo mitad derecha
-        numInversiones += mergesort(datos, mitad+1, finD);
+        // It fills the rightHalf array from the original one
+        for (int i = midIndex; i < array.length; i++) {
+            rightHalf[i-midIndex] = array[i];   // "i-midIndex" because if i put "i" it starts in midIndex (in the new array)
+        }        
+        
+        //It runs recursively until I have less than two elements on the arrays
+        mergesort(leftHalf);
+        mergesort(rightHalf);
 
-        // Union de las dos mitades
-        numInversiones += merge(datos, copia, inicio, mitad, finD);
-
-        return numInversiones;
+        merge(array, leftHalf, rightHalf);
     }
 
-    public static int merge (int [] d, int [] copia, int min, int mid, int max){
-        
-        int inicio = min;
-        int i = min;
-        int mitad = mid + 1;
-        int fin = max;
+    private static void merge (int[] array, int[] leftHalf, int[] rightHalf){
 
-        int numInversiones = 0;
+        int leftSize = leftHalf.length;
+        int rightSize = rightHalf.length;
 
-        //Mientras haya algo en el array, continuo
-        while (inicio <= mid && mid <= fin) {
-            if (d [inicio] <= d [mitad]) {
-                copia [i++] = d [inicio++]; 
-                
-            } else {
-                copia [i++] = d [inicio++];
-                numInversiones += (mid - inicio + 1);
+        int i = 0;  // "i" will run through the leftHalf
+        int j = 0;  // "j" will run through the rightHalf
+        int k = 0;  // "k" will run throught the merged array (final array)
+
+        while (i < leftSize && j < rightSize) {  // It loops until we run out of elements in one of the two arrays
+            if (leftHalf[i] <= rightHalf[j]) {  // If element in leftHalf is smaller, we put it on the merged array
+                array[k] = leftHalf[i];
+                i++;
             }
+            else {  // Otherwise, we put the element of rightHalf on the merged array
+                array[k] = rightHalf[j];
+                j++;
+            }
+            k++;
         }
 
-        // Se copian los elementos restantes que ya vienen ordenados en el array
-        while (inicio <= mid) {
-            copia [i++] = d [inicio++];
+        // At this point, maybe one of the arrays could have "unrevised elements" because of an odd initial array (I think)
+        // These two loops adds to the merged array the remaining items
+        while (i < leftSize) {
+            array[k] = leftHalf[i];
+            i++;
+            k++;
         }
 
-        // No hay que copiar la segunda mitad, los numeros restantes estan bien colocados en "copia".
-        // Se copia al array original
-
-        for (inicio = min; inicio <= max; inicio++) {
-            d [inicio] = copia [inicio];
+        while (j < rightSize) {
+            array[k] = rightHalf[j];
+            j++;
+            k++;
         }
-    
-        return numInversiones;
     }
 }
