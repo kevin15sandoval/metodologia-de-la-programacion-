@@ -1,15 +1,12 @@
 package Caso2;
 
-import java.lang.reflect.Array;
-import java.util.Scanner;
-
 public class kevin {	
 		/**
-	     *  Es la función de "división" que divide el array en dos mitades y 
-	     * llama recursivamente a mergeSort en ambas mitades hasta que el tamanoaño de la mitad es uno.
+	     * Es la funcion de "division" que divide el array en dos mitades y 
+	     * llama recursivamente a mergeSort en ambas mitades hasta que el tamano de la mitad es uno.
 	     */
 	    public static long mergeSort(int[] array,  int izquierda, int derecha) {
-	    	//creamos un array temporal que luego nos ayudara para ordenar el array original por ello su tmañano es igual al del array
+	    	//creamos un array temporal que luego nos ayudara para ordenar el array original por ello su tmaï¿½ano es igual al del array
 	    	int[] temporal = new int[array.length];
 	       //Inicializamos el contador a 0 porque este nos llevara la cuenta del numeor de inversores en nuetsro array
 	    	long contador = 0;
@@ -23,7 +20,7 @@ public class kevin {
 	        return contador;
 	    }
 	    /*
-	     * La función merge es la función de "mezcla" que mezcla las dos mitades y cuenta el número de inversiones en el proceso.
+	     * La funcion merge es la funcion de "mezcla" que mezcla las dos mitades y cuenta el nï¿½mero de inversiones en el proceso.
 	     */
 	    private static long merge(int[] array, int[] temporal, int izquierda, int mitad, int derecha) {
 	        long contador = 0;

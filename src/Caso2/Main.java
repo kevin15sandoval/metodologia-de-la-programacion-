@@ -44,7 +44,7 @@ public class Main {
 
     	// Variables necesarias para interactuar con el usuario
     	int[] dEntrada = null;
-    	int numero = 0, opcion = 0;
+    	int num = 0, opcion = 0;
     	
     	// ------------------------------------------------------------------
     	// Mensaje de bienvenida.
