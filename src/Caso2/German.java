@@ -38,6 +38,7 @@ public class German{
             rightHalf[i-midIndex] = array[i];   // "i-midIndex" because if i put "i" it starts in midIndex (in the new array)
         }        
         
+		// It sums the inversions of leftHalf, rightHalf and merge
         return mergesort(leftHalf) + mergesort(rightHalf) + merge(array, leftHalf, rightHalf);
     }
 
