@@ -1,10 +1,27 @@
 package Caso2;
 
-public class kevin {	
+public class Dominio {	
+	/**
+	 * Clase de Dominio.
+	 * 
+	 * Contiene los métodos necesarios para calcular las inversiones.
+	 */
+	/*
+	 * @author: Kevin Sandoval
+	 */
 		/**
 	     * Es la funcion de "division" que divide el array en dos mitades y 
 	     * llama recursivamente a mergeSort en ambas mitades hasta que el tamano de la mitad es uno.
+	     * 
 	     */
+		/**
+		 * mergerSort.
+		 * 
+		 * @param array
+		 * @param izquierda
+		 * @param derecha
+		 * @return contador
+		 */
 	    public static long mergeSort(int[] array,  int izquierda, int derecha) {
 	    	//creamos un array temporal que luego nos ayudara para ordenar el array original por ello su tamano es igual al del array
 	    	int[] temporal = new int[array.length];
@@ -19,8 +36,16 @@ public class kevin {
 	        }
 	        return contador;
 	    }
-	    /*
+	    /**
+	     * merge.
 	     * La funcion merge es la funcion de "mezcla" que mezcla las dos mitades y cuenta el numero de inversiones en el proceso.
+	     * 
+	     * @param array
+	     * @param temporal
+	     * @param izquierda
+	     * @param mitad
+	     * @param derecha
+	     * @return contador
 	     */
 	    private static long merge(int[] array, int[] temporal, int izquierda, int mitad, int derecha) {
 	        long contador = 0;
