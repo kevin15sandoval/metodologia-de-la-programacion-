@@ -49,7 +49,7 @@ public interface Interfaz {
 	public static void opcionNoExiste() {
 		System.out.println();
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.printf(" \t\t %s la opcion que escribiste, no existe, vuelve a intentarlo de nuevo \n");
+		System.out.printf(" \t %s la opcion que escribiste, no existe, vuelve a intentarlo de nuevo \n", usuario);
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		Main.inicioPrograma();
 		
