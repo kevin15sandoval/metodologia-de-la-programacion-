@@ -56,7 +56,7 @@ public class Main {
     	a = Interfaz.tiempoEjecucion();
     	//System.out.println(a);
     	System.out.println("Aplicacion del metodo directo, mediante formula:");
-        System.out.println(FormulaDirecta.formulaDirecta(entrada));
+        System.out.println(Dominio.formulaDirecta(entrada));
         b = Interfaz.tiempoEjecucion();
         // System.out.println(b);
         System.out.println();
@@ -65,7 +65,7 @@ public class Main {
     public static void opcion2(int entrada) {
     	a = Interfaz.tiempoEjecucion();
     	System.out.println("Aplicacion del metodo recursivo:");
-    	System.out.println(Recursivo.recursivo(entrada));
+    	System.out.println(Dominio.recursivo(entrada));
     	// System.out.print(Interfaz.tiempoEjecucion());
         b = Interfaz.tiempoEjecucion();
         //System.out.println(b);
@@ -74,7 +74,7 @@ public class Main {
     }
     public static void opcion3(int entrada) {
     	System.out.println("Aplicacion del metodo iterativo:");
-    	System.out.println(Iteracion.iteracion(entrada));
+    	System.out.println(Dominio.iteracion(entrada));
     	// System.out.print(Interfaz.tiempoEjecucion());
         b = Interfaz.tiempoEjecucion();
         // System.out.println(b);
