@@ -2,6 +2,7 @@ package Caso2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -51,9 +52,9 @@ public class Main {
     	
     	// ------------------------------------------------------------------
     	// Mensaje de bienvenida.
-        Interfaz.bienvenida();
+        bienvenida();
         // Selecciónar opcion del programa.
-        opcion = Interfaz.pedirOpcion();
+        opcion = pedirOpcion();
         // Operar con la opcion seleccionada.
     	// ------------------------------------------------------------------        
     	try {
@@ -61,7 +62,7 @@ public class Main {
             	// ------------------------------------------------------------------
             	// Cargamos los datos de entrada al programa
             	System.out.println("Cargando los datos de entrada ... ");
-            	Interfaz.animacion();
+            	animacion();
             	// ------------------------------------------------------------------
         		dEntrada = dataEntry();
         	}
@@ -84,7 +85,7 @@ public class Main {
      * @param d
      */
 	private static void opcion1(int[] d) {    	
-		a = Interfaz.tiempoEjecucion();
+		a = tiempoEjecucion();
     	int ini=0;
     	int fin=d.length-1;    	
     	long resultado = Dominio.mergeSort( d, ini, fin );
@@ -93,7 +94,7 @@ public class Main {
     	System.out.println("El nº de inversiones encontradas es: " + resultado);
     	System.out.println("");
     	System.out.println("");
-    	b = Interfaz.tiempoEjecucion();
+    	b = tiempoEjecucion();
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
@@ -102,25 +103,30 @@ public class Main {
 	 * Metodo que finaliza el programa.
 	 */
     private static void salir() {
-    	Interfaz.finPrograma();    
+    	finPrograma();    
 	}
     /**
      * opcionNoExiste.
      * Controla el mensaje de opcion inexistente.
      */
-    private static void opcionNoExiste() {
-    	Interfaz.opcionNoExiste();    
+
+	private static void opcionNoExiste() {
+		System.out.println();
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.printf(" \t %s La opcion que escribiste, no existe, vuelve a intentarlo de nuevo \n",usuario);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		Main.inicioPrograma();		
 	}
     public static int[] dataEntry() {
     	// Fichero de entrada
-    	File file = new File(Interfaz.FICHERO_DATOS);
+    	File file = new File(FICHERO_DATOS);
     	// Scanner de datos
     	Scanner sc = null;
     	
     	try {
     		sc = new Scanner(file);
     	} catch (FileNotFoundException e) {
-    		System.out.println("Revise el nombre del fichero en Interfaz.java");
+    		System.out.println("Revise el nombre del fichero en java");
     		e.printStackTrace();
     	}
     	// Leemos el primer renglon y declaramos el tamaño del array que queremos.
@@ -135,4 +141,66 @@ public class Main {
     	// System.out.println(Arrays.toString(arrayDatos)); // Imprimimos los datos leídos
     	return arrayDatos;
     }
+    
+    static // -------------------------------- METODOS DE LA INTERFAZ ---------------------------------
+    
+
+	String usuario = System.getProperty("user.name");
+	// Fichero con los datos de entrada	
+	public static String FICHERO_DATOS = "src/Caso2/Data/InversionsTest_12.dat";
+	// Metodos de la interfaz
+	public static void interfaz() {}
+	public static void bienvenida() {
+		System.out.println("********************************************************************************");
+		System.out.printf("**   Bienvenido %s al segundo caso. - Numeros de inversiones ***\n", usuario);
+		System.out.println("********************************************************************************\n");        
+	}
+	public static int pedirOpcion() {
+		int entrada = 0;		
+		/* ---------------------------------------------------------------- */
+		System.out.println("Selecciona una de las opciones disponibles: ");
+		System.out.println("");		
+		System.out.println("1- Calcular inversiones en los datos proporcionados.");
+		System.out.println("____________________________________________________");
+        System.out.println("0- Finalizar programa.");
+        System.out.print("");
+        /* ---------------------------------------------------------------- */
+        @SuppressWarnings("resource")		
+		Scanner dato = new Scanner(System.in);
+        entrada = dato.nextInt();
+        /* ---------------------------------------------------------------- */
+        return entrada;
+	}
+	public static void finPrograma() {	
+		System.out.println();
+		System.out.println("Fin del programa!");
+		System.out.println( usuario + " gracias por usar nuestro programa de Numero de Inversiones.");
+		System.exit(0);
+	}
+	public static double tiempoEjecucion() {
+		double timer = System.nanoTime();
+
+		return timer;
+	}
+	public static void animacion() throws IOException, InterruptedException {
+		System.out.print(""" 
+				____     ___   ____   ____     ___       ___                    ___       ___________   
+				`MM'     `M'  6MMMMb/ `MM'     `MMb     dMM'                    `MMb     dMM'`MMMMMMMb. 
+				 MM       M  8P    YM  MM       MMM.   ,PMM                      MMM.   ,PMM  MM    `Mb 
+				 MM       M 6M      Y  MM       M`Mb   d'MM                      M`Mb   d'MM  MM     MM 
+				 MM       M MM         MM       M YM. ,P MM                      M YM. ,P MM  MM     MM 
+				 MM       M MM         MM       M `Mb d' MM                      M `Mb d' MM  MM    .M9 
+				 MM       M MM         MM       M  YM.P  MM                      M  YM.P  MM  MMMMMMM9' 
+				 MM       M MM         MM       M  `Mb'  MM       MMMMMMM        M  `Mb'  MM  MM        
+				 YM       M YM      6  MM       M   YP   MM                      M   YP   MM  MM        
+				  8b     d8  8b    d9  MM    /  M   `'   MM                      M   `'   MM  MM        
+				   YMMMMM9    YMMMM9  _MMMMMMM _M_      _MM_                    _M_      _MM__MM_  
+				   				
+				   								
+				   																""");
+		String anim= "|====>"; for (int x =0 ; x < 11 ; x++) { 
+			String data = "\t" + anim.charAt(x % anim.length()) + " " + x ; System.out.write(data.getBytes()); Thread.sleep(100);		
+		}
+		System.out.println();
+	}
 }

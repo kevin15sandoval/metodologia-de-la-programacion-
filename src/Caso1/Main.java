@@ -38,8 +38,8 @@ public class Main {
      */
     public static void inicioPrograma() {    	
     	int numero = 0, opcion = 0;
-        Interfaz.bienvenida();
-        opcion = Interfaz.pedirOpcion();        
+        bienvenida();
+        opcion = pedirOpcion();        
     	try {
         	if ( opcion != 4 ) {
         		System.out.println("Introduce que numero hexagonal quieres calcular: ");
@@ -63,11 +63,11 @@ public class Main {
      * @param entrada
      */
     public static void opcion1(int entrada) {    	
-    	a = Interfaz.tiempoEjecucion();
+    	a = tiempoEjecucion();
     	//System.out.println(a);
     	System.out.println("Aplicacion del metodo directo, mediante formula:");
         System.out.println(Dominio.formulaDirecta(entrada));
-        b = Interfaz.tiempoEjecucion();
+        b = tiempoEjecucion();
         // System.out.println(b);
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
@@ -77,11 +77,11 @@ public class Main {
      * @param entrada
      */
     public static void opcion2(int entrada) {
-    	a = Interfaz.tiempoEjecucion();
+    	a = tiempoEjecucion();
     	System.out.println("Aplicacion del metodo recursivo:");
     	System.out.println(Dominio.recursivo(entrada));
-    	// System.out.print(Interfaz.tiempoEjecucion());
-        b = Interfaz.tiempoEjecucion();
+    	// System.out.print(tiempoEjecucion());
+        b = tiempoEjecucion();
         //System.out.println(b);
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
@@ -93,8 +93,8 @@ public class Main {
     public static void opcion3(int entrada) {
     	System.out.println("Aplicacion del metodo iterativo:");
     	System.out.println(Dominio.iteracion(entrada));
-    	// System.out.print(Interfaz.tiempoEjecucion());
-        b = Interfaz.tiempoEjecucion();
+    	// System.out.print(tiempoEjecucion());
+        b = tiempoEjecucion();
         // System.out.println(b);
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
@@ -103,13 +103,55 @@ public class Main {
      *  Metodo salir del programa
      */
     public static void salir() {
-    	Interfaz.finPrograma();    
+    	finPrograma();    
 	}
     /**
      * Opcion no existe
      */
-    public static void opcionNoExiste() {
-    	Interfaz.opcionNoExiste();    
+
+	public static void opcionNoExiste() {
+		System.out.println();
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.printf(" \t %s la opcion que escribiste, no existe, vuelve a intentarlo de nuevo \n", usuario);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		Main.inicioPrograma();
+		
 	}
     
+    // --------------------- METODOS DE LA INTERFAZ --------------------------------------------------
+    
+
+	private static String usuario = System.getProperty("user.name");
+	public static void interfaz() {}
+	public static void bienvenida() {
+		System.out.println("******************************************************************************************************************************");
+		System.out.printf("**   Bienvenido %s al primer caso. - Numeros Hexagonales ***\n", usuario);
+		System.out.println("******************************************************************************************************************************\n");        
+	}
+	public static int pedirOpcion() {
+		int entrada = 0;		
+		/* ---------------------------------------------------------------- */
+		System.out.println("Selecciona una de las opciones disponibles: ");
+		System.out.println("1- Por formula.");
+        System.out.println("2- Por recursividad.");
+        System.out.println("3- Por iteracion.");
+        System.out.println("4- Finalizar programa.");
+        System.out.print("");
+        /* ---------------------------------------------------------------- */
+        @SuppressWarnings("resource")		
+		Scanner dato = new Scanner(System.in);
+        entrada = dato.nextInt();
+        /* ---------------------------------------------------------------- */
+        return entrada;
+	}
+	public static void finPrograma() {	
+		System.out.println();
+		System.out.println("Fin del programa!");
+		System.out.println( usuario + " gracias por usar nuestro programa de Numeros Hexagonales.");
+		System.exit(0);
+	}
+	public static double tiempoEjecucion() {
+		double timer = System.nanoTime();
+		return timer;
+	}
 }
