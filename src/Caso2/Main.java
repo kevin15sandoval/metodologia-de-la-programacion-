@@ -23,7 +23,8 @@ package Caso2;
  * 
  * Problema.
  *    Dada una permutación contar el número de inversiones.
- *
+ */
+ /*
  * @author Paulino
  * @version 0.1
  */
@@ -51,7 +52,7 @@ public class Main {
         // Operar con la opcion seleccionada.
     	// ------------------------------------------------------------------        
     	try {
-        	if ( opcion != 5 ) {
+        	if ( opcion != 0 ) {
             	// ------------------------------------------------------------------
             	// Cargamos los datos de entrada al programa
             	System.out.println("Cargando los datos de entrada ... ");
@@ -60,12 +61,8 @@ public class Main {
         		dEntrada = Datos.dataEntry();
         	}
             switch (opcion) {
-            	case 0 -> opcion0(dEntrada); // No está pedido pero así lo practicamos y vemos las diferencias de tiempos
-            	case 1 -> opcion1(dEntrada); // andres()
-            	case 2 -> opcion2(dEntrada); // german()
-            	case 3 -> opcion3(dEntrada); // kevin()
-            	case 4 -> opcion4(dEntrada); // paulino()
-            	case 5 -> salir();
+            	case 1 -> opcion1(dEntrada); // kevin()
+            	case 0 -> salir();
             	default -> opcionNoExiste();
             }
         } catch( Exception e) {
@@ -76,66 +73,38 @@ public class Main {
         	System.exit(1);
         }        
     }
-    private static void opcion0(int[] d) {
-    	a = Interfaz.tiempoEjecucion();
-    	System.out.println(FuerzaBruta.fuerzaBruta(d));
-        b = Interfaz.tiempoEjecucion();  
-        System.out.println();
-        System.out.println("Resultado final: "+ (b-a) + "ns");    	
-	}
+    /**
+     * opcion1
+     * Metodo para calculkar las inversiones encontradas en el fichero de datos. Necesita como parametro los datos de tipo array.
+     * @param d
+     */
 	private static void opcion1(int[] d) {    	
-    	a = Interfaz.tiempoEjecucion();
-    	Andres.mergesort(d);
-        b = Interfaz.tiempoEjecucion();  
-        System.out.println();
-        System.out.println("Resultado final: "+ (b-a) + "ns");
-    }
-    private static void opcion2(int[] d) {
-		long result = German.mergesort(d);
-		printArray(d);
-		System.out.println("Inversiones contadas: " + (result));
-        b = Interfaz.tiempoEjecucion();
-        System.out.println();
-        System.out.println("Resultado final: "+ (b-a) + "ns");
-    }
-    private static void opcion3(int[] d) {
-    	a = Interfaz.tiempoEjecucion();
+		a = Interfaz.tiempoEjecucion();
     	int ini=0;
     	int fin=d.length-1;    	
-    	long resultado = kevin.mergeSort( d, ini, fin );
+    	long resultado = Dominio.mergeSort( d, ini, fin );
+    	System.out.println("");
+    	System.out.println("");
     	System.out.println("El nº de inversiones encontradas es: " + resultado);
+    	System.out.println("");
+    	System.out.println("");
     	b = Interfaz.tiempoEjecucion();
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
-    private static void opcion4(int[] d) {
-    	a = Interfaz.tiempoEjecucion();
-    	
-    	int ini= 0, mid = d.length-1;
-    	int r = Paulino.mergesort(d, ini, mid);
-    	System.out.println("Inversiones contadas: " + (r-1));
-    	b = Interfaz.tiempoEjecucion(); 
-        System.out.println();
-        System.out.println("Resultado final: "+ (b-a) + "ns");
-    }
+	/**
+	 * salir.
+	 * Metodo que finaliza el programa.
+	 */
     private static void salir() {
     	Interfaz.finPrograma();    
 	}
+    /**
+     * opcionNoExiste.
+     * Controla el mensaje de opcion inexistente.
+     */
     private static void opcionNoExiste() {
     	Interfaz.opcionNoExiste();    
 	}
 	
-	// @German -> Este metodo le he creado yo, es por estetica para la opcion 2, se podria borrar sin problema
-	public static void printArray (int[] array){
-		System.out.printf("[");
-		for (int i = 0; i < array.length; i++) {
-			if (i == array.length - 1) {
-				System.out.printf("%d", array[i]);	
-			}
-			else {
-			System.out.printf("%d, ", array[i]);
-			}
-		}
-		System.out.println("]");
-	}
 }

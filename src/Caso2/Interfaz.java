@@ -28,13 +28,10 @@ public interface Interfaz {
 		int entrada = 0;		
 		/* ---------------------------------------------------------------- */
 		System.out.println("Selecciona una de las opciones disponibles: ");
-		System.out.println("");
-		System.out.println("Inversion programada por: ");
-		System.out.println("1- Andres.");
-        System.out.println("2- German.");
-        System.out.println("3- Kevin.");
-        System.out.println("4- Paulino.");        
-        System.out.println("5- Finalizar programa.");
+		System.out.println("");		
+		System.out.println("1- Calcular inversiones en los datos proporcionados.");
+		System.out.println("____________________________________________________");
+        System.out.println("0- Finalizar programa.");
         System.out.print("");
         /* ---------------------------------------------------------------- */
         @SuppressWarnings("resource")		
@@ -77,7 +74,7 @@ public interface Interfaz {
 				   				
 				   								
 				   																""");
-		String anim= "|��>"; for (int x =0 ; x < 11 ; x++) { 
+		String anim= "|====>"; for (int x =0 ; x < 11 ; x++) { 
 			String data = "\t" + anim.charAt(x % anim.length()) + " " + x ; System.out.write(data.getBytes()); Thread.sleep(100);		
 		}
 		System.out.println();

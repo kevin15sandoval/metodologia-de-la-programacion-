@@ -42,7 +42,7 @@ public class Datos {
     		arrayDatos[i] = sc.nextInt(); 
     	}
     	sc.close();
-    	System.out.println(Arrays.toString(arrayDatos));
+    	// System.out.println(Arrays.toString(arrayDatos)); // Imprimimos los datos leídos
     	return arrayDatos;
     }
 }
