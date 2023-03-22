@@ -5,6 +5,8 @@ public class Dominio {
 	/**
 	 * Aplicacion de la formula directa.
 	 * 
+	 */
+	/*
 	 * @author Andres D.
 	 *
 	 */
@@ -20,7 +22,11 @@ public class Dominio {
 	 * 
 	 * 		El for itera las veces necesarias, sustituyendo el valor de acumulador.
 	 * 		Al finalizar, el valor de acumulador se asigna a la variable "resultado".
+	 *
 	 * 
+	 */
+	
+	/*
 	 * @author German P.
 	 */
 	public static double iteracion(int valorEntrada) {
@@ -48,7 +54,8 @@ public class Dominio {
 	 * 		Estabelcemos el metrodo recursivo aplicando la formula H(n-1) + 4n-3 y siendo el H(N-1) Lo que aplicamos en la recursividad 
 	 * 		llamando de nuevo a nuestro metodo con el valor restando uno para llegar hatsa el caso base, y posteriormente colocamos la continucacion
 	 * 		de la formula a la que llegamos en nuestro algoritmo obteniendo asi nuestro valores de los numeros hexagonales correspondientes
-	 * 	
+	 */
+	/*
 	 * @author Kevin A.
 	 */	
 	public static double recursivo(int valorEntrada) {

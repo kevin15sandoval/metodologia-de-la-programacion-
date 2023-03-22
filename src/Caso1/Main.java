@@ -16,7 +16,8 @@ import java.util.Scanner;
  *         - Determinar teoricamente la complejidad de los tres algoritmos.
  *         - Implementar los tres algoritmos en un programa en Java.
  *         - Determinar empiricamente el tiempo de ejecucion de los tres algoritmos como funcion de n.
- *
+ */
+/*
  * @author Paulino
  * @version 0.1
  */
