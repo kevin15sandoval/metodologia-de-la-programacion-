@@ -1,4 +1,9 @@
 package Caso2;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  * Practicas. Caso de estudio 2.
  * 
@@ -58,7 +63,7 @@ public class Main {
             	System.out.println("Cargando los datos de entrada ... ");
             	Interfaz.animacion();
             	// ------------------------------------------------------------------
-        		dEntrada = Datos.dataEntry();
+        		dEntrada = dataEntry();
         	}
             switch (opcion) {
             	case 1 -> opcion1(dEntrada); // kevin()
@@ -106,5 +111,28 @@ public class Main {
     private static void opcionNoExiste() {
     	Interfaz.opcionNoExiste();    
 	}
-	
+    public static int[] dataEntry() {
+    	// Fichero de entrada
+    	File file = new File(Interfaz.FICHERO_DATOS);
+    	// Scanner de datos
+    	Scanner sc = null;
+    	
+    	try {
+    		sc = new Scanner(file);
+    	} catch (FileNotFoundException e) {
+    		System.out.println("Revise el nombre del fichero en Interfaz.java");
+    		e.printStackTrace();
+    	}
+    	// Leemos el primer renglon y declaramos el tamaño del array que queremos.
+    	int size = sc.nextInt();
+    	// Creamos el array con el tamaño detectado
+    	int[] arrayDatos = new int[size];
+    	// Rellenamos el array
+    	for	( int i = 0; i < size; i++ ) {
+    		arrayDatos[i] = sc.nextInt(); 
+    	}
+    	sc.close();
+    	// System.out.println(Arrays.toString(arrayDatos)); // Imprimimos los datos leídos
+    	return arrayDatos;
+    }
 }

@@ -4,7 +4,7 @@ package Caso2;
  * 
  * Contiene los métodos necesarios para calcular las inversiones.
  *
- * @author: Kevin Gomez
+ * @author: 
  */
 public class Dominio {	
 		
