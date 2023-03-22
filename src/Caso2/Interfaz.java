@@ -1,17 +1,22 @@
-/**
- * Interfaz de usuario del caso 1.
- * ===============================
- * Contenido.
- * ===============================
- */
+
 package Caso2;
-
-import java.io.IOException;
-import java.util.Scanner;
-
 /**
+ * Interfaz de usuario del caso 2.
+ * 
+ * - Mensaje de bienvenida.
+ * - pedir Opcion
+ * - findePrograma
+ * - tiempoEjecucion
+ * - opcionNoExiste
+ *
  * @author Paulino
  * @version 0.1
+ */
+import java.io.IOException;
+import java.util.Scanner;
+/**
+ * Interfaz del programa
+ *
  */
 public interface Interfaz {
 	String usuario = System.getProperty("user.name");

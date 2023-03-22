@@ -1,1 +1,1 @@
-moduleSearchIndex = [{"l":"Algoritmos"}];updateSearchResults();
+moduleSearchIndex = [];updateSearchResults();

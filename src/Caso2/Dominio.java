@@ -1,22 +1,18 @@
 package Caso2;
-
+/**
+ * Clase de Dominio.
+ * 
+ * Contiene los métodos necesarios para calcular las inversiones.
+ *
+ * @author: Kevin Gomez
+ */
 public class Dominio {	
-	/**
-	 * Clase de Dominio.
-	 * 
-	 * Contiene los métodos necesarios para calcular las inversiones.
-	 */
-	/*
-	 * @author: Kevin Sandoval
-	 */
-		/**
-	     * Es la funcion de "division" que divide el array en dos mitades y 
-	     * llama recursivamente a mergeSort en ambas mitades hasta que el tamano de la mitad es uno.
-	     * 
-	     */
+		
+		
 		/**
 		 * mergerSort.
-		 * 
+		 * Es la funcion de "division" que divide el array en dos mitades y 
+	     * llama recursivamente a mergeSort en ambas mitades hasta que el tamano de la mitad es uno.
 		 * @param array
 		 * @param izquierda
 		 * @param derecha
@@ -39,7 +35,6 @@ public class Dominio {
 	    /**
 	     * merge.
 	     * La funcion merge es la funcion de "mezcla" que mezcla las dos mitades y cuenta el numero de inversiones en el proceso.
-	     * 
 	     * @param array
 	     * @param temporal
 	     * @param izquierda

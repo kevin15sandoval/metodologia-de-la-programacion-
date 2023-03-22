@@ -24,13 +24,18 @@ import java.util.Scanner;
 public class Main {
 	static double a = 0;
 	static double b = 0;
-	
+	/**
+	 * Programa principal
+	 */
     public static void main(String[] args) {
         do {
         	inicioPrograma();
         }while(true);
         	
     }
+    /**
+     * Inicio del programa
+     */
     public static void inicioPrograma() {    	
     	int numero = 0, opcion = 0;
         Interfaz.bienvenida();
@@ -53,6 +58,10 @@ public class Main {
         	System.out.println("Error: " + e);
         }        
     }
+    /**
+     * metodo de formula directa
+     * @param entrada
+     */
     public static void opcion1(int entrada) {    	
     	a = Interfaz.tiempoEjecucion();
     	//System.out.println(a);
@@ -63,6 +72,10 @@ public class Main {
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
+    /**
+     * metodo recursivo
+     * @param entrada
+     */
     public static void opcion2(int entrada) {
     	a = Interfaz.tiempoEjecucion();
     	System.out.println("Aplicacion del metodo recursivo:");
@@ -73,6 +86,10 @@ public class Main {
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
+    /**
+     * metodo iterativo
+     * @param entrada
+     */
     public static void opcion3(int entrada) {
     	System.out.println("Aplicacion del metodo iterativo:");
     	System.out.println(Dominio.iteracion(entrada));
@@ -82,9 +99,15 @@ public class Main {
         System.out.println();
         System.out.println("Resultado final: "+ (b-a) + "ns");
     }
+    /**
+     *  Metodo salir del programa
+     */
     public static void salir() {
     	Interfaz.finPrograma();    
 	}
+    /**
+     * Opcion no existe
+     */
     public static void opcionNoExiste() {
     	Interfaz.opcionNoExiste();    
 	}
