@@ -33,7 +33,8 @@ public class Dominio {
 	        return contador;
 	    }
 	    /**
-	     * merge.
+	     * MERGE MODIFICADO.
+	     * Realizamos un if exclusivo para detectar el valor '1' o '2', para que fuesen los únicos que realicen el conteo de las inversiones.
 	     * La funcion merge es la funcion de "mezcla" que mezcla las dos mitades y cuenta el numero de inversiones en el proceso.
 	     * @param array
 	     * @param temporal
@@ -49,7 +50,7 @@ public class Dominio {
 	            if (array[i] <= array[j]) {
 	                temporal[k++] = array[i++];
 	            } else {
-	            	temporal[k++] = array[j++];	            	
+	            	temporal[k++] = array[j++];		            	
 	                if ( i == 1 ) {	                	
 	                	contador += mitad - i + 1; // Contabiliza las inversiones
 	                } else if ( i == 2) {
