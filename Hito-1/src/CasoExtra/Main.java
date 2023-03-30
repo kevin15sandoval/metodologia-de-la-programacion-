@@ -138,6 +138,7 @@ public class Main {
     		arrayDatos[i] = sc.nextInt(); 
     	}
     	sc.close();
+    	System.out.println("este es el tamaño" +size);
     	// System.out.println(Arrays.toString(arrayDatos)); // Imprimimos los datos leídos
     	return arrayDatos;
     }

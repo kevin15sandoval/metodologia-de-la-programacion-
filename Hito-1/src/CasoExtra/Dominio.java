@@ -50,11 +50,9 @@ public class Dominio {
 	                temporal[k++] = array[i++];
 	            } else {
 	            	temporal[k++] = array[j++];	            	
-	                if ( i == 1 ) {	                	
+	                if ( i == 1 || i== 2 ) {	                	
 	                	contador += mitad - i + 1; // Contabiliza las inversiones
-	                } else if ( i == 2) {
-	                	contador += mitad - i + 1; // Contabiliza las inversiones
-	                }
+	                } 
 	            }
 	        }
 	        while (i <= mitad) {

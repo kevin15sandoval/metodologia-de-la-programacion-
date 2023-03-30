@@ -60,7 +60,9 @@ public class Dominio {
 	                //en el caso contrario sucede lo mismo solo que se copia lo de la posicion j y nos inidica si ha habido una inversion
 	            } else {
 	                temporal[k++] = array[j++];
-	                contador += mitad - i + 1; // Contabiliza las inversiones
+	                if ( i== 2 ) {	                	
+	                	contador += mitad - i + 1; // Contabiliza las inversiones
+	                }
 	            }
 	        }
 	        //  en el caso de que no se cumpla la condicion del while anterior establecemos dos while uno para condicion 
