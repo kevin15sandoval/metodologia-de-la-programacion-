@@ -135,7 +135,7 @@ public class Main {
     	int[] arrayDatos = new int[size];
     	// Rellenamos el array
     	for	( int i = 0; i < size; i++ ) {
-    		arrayDatos[i] = sc.nextInt(); 
+    		arrayDatos[i] = sc.nextInt();     		
     	}
     	sc.close();
     	System.out.println("este es el tamaño" +size);

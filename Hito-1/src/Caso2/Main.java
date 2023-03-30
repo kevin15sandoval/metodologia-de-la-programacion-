@@ -147,7 +147,7 @@ public class Main {
 
 	String usuario = System.getProperty("user.name");
 	// Fichero con los datos de entrada	
-	public static String FICHERO_DATOS = "src/Caso2/Data/InversionsTest_12.dat";
+	public static String FICHERO_DATOS = "src/Caso2/Data/InversionsHito1.dat";
 	// Metodos de la interfaz
 	public static void interfaz() {}
 	public static void bienvenida() {
