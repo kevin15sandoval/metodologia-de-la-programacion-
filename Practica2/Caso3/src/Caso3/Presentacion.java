@@ -1,8 +1,11 @@
 package Caso3;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  * Solado eco.
@@ -26,11 +29,19 @@ public class Presentacion {
 	 * ##~~~#~##~~##~######~##~~##
 	 * 
 	 */
-	public static void main(String[] args) {
-		bienvenida();
-		datosSuperficie();
+	public static void main(String[] args) throws InterruptedException {
+		bienvenida(); // OK
+		int superficie = datosSuperficie(); // OK 	
 		
+		List<Integer> cola = null;
+		int[] n = datosBaldosa(); // OK		
+		cola = crearColaBaldosas(n);
+		System.out.println(cola);
+		
+		List<Integer> baldosasUsadas = cubrirSuperficie(superficie, cola);
+		System.out.println(baldosasUsadas.size());		
 	}
+	
 	public static Scanner sc;	
 	/*
 	 * ##~~~#~#####~##~~##~##~~##
@@ -44,22 +55,20 @@ public class Presentacion {
 	 * 
 	 * Imprime el mensaje de bienvenida de plataformado de un suelo a partir de baldosas cuadradas.
 	 * El programa busca la cantidad mínima de baldosas necesarias para cubrir la superficie proporcionada por el usuario.
+	 * @throws InterruptedException 
 	 */
-	private static void bienvenida() {
+	private static void bienvenida() throws InterruptedException {
 		System.out.print("""
 				\n				
-				\t\t ===================================================== \n
+				\t\t =============================================================== \n
 				\t\t BIENVENIDO AL SOLADO ECONOMICO DE LOS HERMANOS SCOOT. \n
-				\t\t ===================================================== \n
-				\t   El programa busca la cantidad mínima de baldosas necesarias para cubrir una superficie cuadrada. \n 
-				\t   Para que funcione correctamnete, es necesario que proporciones: \n 
-				\t\t  1- Medidas de la superficie. \n 
-				\t\t  2- Tamaño de las baldosas. \n
-				\t.............................................. \n
-				\t\t Pulse ENTER para continuar
-				\t.............................................. \n
-				""");		
-		sc = new Scanner(System.in); 
+				\t\t =============================================================== \n
+				\t\t El programa busca la cantidad mínima de baldosas necesarias para cubrir una superficie cuadrada. \n 
+				\t\t Para que funcione correctamnete, es necesario que proporciones: \n 
+				\t\t\t  1- Medidas de la superficie. \n 
+				\t\t\t  2- Tamaño de las baldosas. \n
+				""");
+		Thread.sleep(3000);
 	}
 	/**
 	 * Metodo menu de datos de superficie.
@@ -67,28 +76,21 @@ public class Presentacion {
 	 * Proporciona la superficie total a cubrir con las baldosas.
 	 * @return superficie
 	 */
-	@SuppressWarnings("finally")
 	private static int datosSuperficie() {		
 		int superficie = 0;
 		System.out.print("""
-				\n DATOS DE SUPERFICIE.  \n\n 
+				\n DATOS DE SUPERFICIE.  \n
 				\t Introduce el tamaño de la superficie a solar: """);
 		sc = new Scanner(System.in);
 		superficie = sc.nextInt();
-		try {
-			if ( superficie < 0 ) {
-				MiException.exNumNegativo();
-				datosSuperficie();
-			} else if ( superficie == 0) {
-				MiException.exNumZero();
-				datosSuperficie();
-			}
-		} catch (Exception e1) {
-			System.out.println(e1.getMessage());			
-		} finally {
-			sc.close();
-			return superficie;
-		}
+		if ( superficie < 0 ) {
+			MiException.exNumNegativo();
+			datosSuperficie();
+		} else if ( superficie == 0) {
+			MiException.exNumZero();
+			datosSuperficie();
+		}		
+		return superficie;				
 	}
 	/**
 	 * Menu con el lado de la baldosa
@@ -96,29 +98,67 @@ public class Presentacion {
 	 * Metodo que guarda los tipos de baldosas cuadradas disponibles a partir del lado, proporcionado por el usuario. 
 	 * @return lbaldosas
 	 */
-	private static int datosBaldosa() {
-		int lBaldosas;
-		int [] ladoBaldosas;
+	private static int[] datosBaldosa() {
 		System.out.print("""
-				\n DATOS DE LAS BALDOSAS. \n\n		
-				\t Tamaño del lado de la baldosa [mts]:
+				\n DATOS DE LAS BALDOSAS. \n		
+				\t Escriba el lado de las baldosas, separados por comas: \n
 					""");
-		sc = new Scanner(System.in);
-		lBaldosas = sc.nextInt();
-		return lBaldosas;
+		String datos = sc.nextLine();
+		String[] ladosString = datos.split(",");
+		int[] lados = new int[ladosString.length];
+		for (int i = 0; i < ladosString.length; i++) {
+			lados[i] = Integer.parseInt(ladosString[i]);
+		}			
+		return lados;
 	}	
-	
-	private static Queue<Integer> crearColaBaldosas(int lado) {
-		Queue<Integer> cola = new LinkedList<>();
-        for (int i = 1; i <= lado; i++) {
-            for (int j = 1; j <= lado; j++) {
-                int area = i * j;
-                if (!cola.contains(area)) {
-                    cola.offer(area);
-                }
-            }
+	/**
+	 * Metodo crearColaBaldosas.
+	 * 
+	 * Crea una cola que contenga los valores de las áreas de todas las posibles baldosas que se pueden formar con ese tamaño de lado.
+	 * Se usa un bucle y calcula el valor de 'j' en cada iteración, reduciendo la cantidad de iteraciones. Además, usa un conjunto HastSet 
+	 * llamado 'areas' para mantener un registro de las áreas que ya se han agregado, reduciendo la cantidad de operaciones de búsqueda en 
+	 * la cola. 
+	 * Finalmente, la cola se define como una PriorityQueue, lo que elimina la necesidad de ordenar los elementos después.
+	 * @param lado
+	 * @return cola
+	 */
+	private static List<Integer> crearColaBaldosas(int[] ladoDado) {
+		List<Integer> cola = new ArrayList<>();
+		Set<Integer> areas = new HashSet<>();
+        for (int lado : ladoDado) {
+    		int area = lado * lado;
+    		if ( !areas.contains(area)) {
+    			cola.add(area);
+    			areas.add(area);
+    		}
         }
+        Collections.sort(cola);
         return cola;
+	}
+	/**
+	 * Metodo cubrirSuperficie
+	 * 
+	 * Metodo de calculo para la resolucion del numero de baldosas utilizadas para cubrir la superficie dada.
+	 * @param superficie
+	 * @param cola
+	 * @return bUsadas
+	 */
+	private static List<Integer> cubrirSuperficie(int superficie, List<Integer> cola) {		
+		List<Integer> bUsadas = new ArrayList<>();
+		while ( superficie > 0 ) {
+			int i = cola.size() - 1 ;
+			while ( i >= 0 && cola.get(i) > superficie  ) {
+				i--;
+			}
+			if ( i >= 0 ) {
+				int baldosa = cola.get(i);
+				bUsadas.add(baldosa);
+				superficie -= baldosa;				
+			} else {
+				System.out.println("Error. No hay baldosas disponibles que quepan en la superficie restante.");				
+			}
+		}
+		return bUsadas;				
 	}
 }
 
