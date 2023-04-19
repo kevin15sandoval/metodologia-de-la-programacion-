@@ -1,12 +1,15 @@
 package Caso3;
+import java.util.*;
 
 public class Dominio {
-    public static void Dominio() {
-        soladoSuperficie();
-        seleccionarBaldosa();
-        buscarIndiceTamanioBaldosa();
-        mostrarResultado();
-
+    /*public static void Dominio(int size_solar, int[] listado_baldosas ) {    	
+        soladoSuperficie(size_solar , listado_baldosas);        
+    }
+    */
+    public static void main(String[] args) {
+        int n = 10; // Tamaño del cuadrado principal
+        int[] tamaniosBaldosas = {5, 3, 2}; // Tamaños de los cuadrados de relleno
+        soladoSuperficie(n, tamaniosBaldosas);
     }
 
     private static void soladoSuperficie(int n, int[] tamaniosBaldosas) {
@@ -20,7 +23,16 @@ public class Dominio {
             cantidadesBaldosas[indiceTamanioBaldosa] += cantidadBaldosas;
             areaRestante -= baldosa * cantidadBaldosas;
         }
-        mostrarResultado(cantidadesBaldosas, tamaniosBaldosas);
+        dibujarCuadrado(n, tamaniosBaldosas, cantidadesBaldosas);
+    }
+
+    private static List<Integer> crearColaBaldosas(int[] tamaniosBaldosas) {
+        List<Integer> colaBaldosas = new ArrayList<Integer>();
+        for (int i = 0; i < tamaniosBaldosas.length; i++) {
+            colaBaldosas.add(tamaniosBaldosas[i]);
+        }
+        Collections.sort(colaBaldosas, Collections.reverseOrder());
+        return colaBaldosas;
     }
 
     private static int seleccionarBaldosa(List<Integer> colaBaldosas, int areaRestante) {
@@ -40,25 +52,62 @@ public class Dominio {
         }
         return -1; // En caso de error
     }
-
-    private static void mostrarResultado(int[] cantidadesBaldosas, int[] tamaniosBaldosas) {
-        System.out.println("Baldosas utilizadas:");
-        for (int i = 0; i < tamaniosBaldosas.length; i++) {
-            if (cantidadesBaldosas[i] > 0) {
-                System.out.println("- " + cantidadesBaldosas[i] + " baldosas de " + tamaniosBaldosas[i] + " metros de lado");
+    private static void dibujarCuadrado(int n, int[] tamaniosBaldosas, int[] cantidadesBaldosas) {
+    	System.out.println("n = " + n);	
+	    int[][] cuadrado = new int[n][n];
+	    System.out.println("cuadrado.length = " + cuadrado.length);
+	    System.out.println("cuadrado[0].length = " + cuadrado[0].length);
+        // Crear cuadrado inicial
+        // int[][] cuadrado = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                cuadrado[i][j] = 0;
             }
         }
-        System.out.println("Solado resultante:");
-        for (int i = 0; i < cantidadesBaldosas.length; i++) {
-            if (cantidadesBaldosas[i] > 0) {
-                int tamanoBaldosa = tamaniosBaldosas[i];
-                for (int j = 0; j < cantidadesBaldosas[i]; j++) {
-                    for (int k = 0; k < tamanoBaldosa; k++) {
-                        for (int l = 0; l < tamanoBaldosa; l++) {
-                            System.out.print("# ");
-                        }
-                        System.out.println();
+        
+        // Mostrar cuadrado inicial
+        System.out.println("Cuadrado inicial:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(cuadrado[i][j] + "#");
+            }
+            System.out.println();
+        }
+        System.out.println();
+        
+        // Llenar cuadrado con baldosas
+        int fila = 0;
+        int columna = 0;
+        for (int i = 0; i < tamaniosBaldosas.length; i++) {
+            int cantidadBaldosas = cantidadesBaldosas[i];
+            for (int j = 0; j < cantidadBaldosas; j++) {
+                int tamBaldosa = tamaniosBaldosas[i];
+                for (int k = fila; k < fila + tamBaldosa; k++) {
+                    for (int l = columna; l < columna + tamBaldosa && l < n; l++) {
+                        cuadrado[k][l] = tamBaldosa;
                     }
+                }
+                columna += tamBaldosa;
+                if (columna >= n) {
+                    fila += tamBaldosa;
+                    columna = 0;
+                }
+            }
+        }
+        
+        // Mostrar cuadrado final
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int tamBaldosa = cuadrado[i][j];
+                for (int k = 0; k < tamBaldosa; k++) {
+                    for (int l = 0; l < tamBaldosa; l++) {
+                        if (k == 0 || l == 0) {
+                            System.out.print(tamBaldosa + " ");
+                        } else {
+                            System.out.print("  ");
+                        }
+                    }
+                    System.out.println();
                 }
             }
         }
