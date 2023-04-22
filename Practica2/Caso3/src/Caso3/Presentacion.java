@@ -31,15 +31,10 @@ public class Presentacion {
 	 */
 	public static void main(String[] args) throws InterruptedException {
 		bienvenida(); // OK
-		int superficie = datosSuperficie(); // OK 	
-		
-		List<Integer> cola = null;
-		int[] n = datosBaldosa(); // OK		
-		cola = crearColaBaldosas(n);
-		System.out.println(cola);
-		
-		List<Integer> baldosasUsadas = cubrirSuperficie(superficie, cola);
-		System.out.println(baldosasUsadas.size());		
+		int superficie = datosSuperficie(); // OK 
+		int cantBaldosas = cantBaldosas();
+		int[] listadoBaldosas = crearColaBaldosas(cantBaldosas);
+		Dominio.dominio(superficie, listadoBaldosas);		
 	}
 	
 	public static Scanner sc;	
@@ -80,7 +75,8 @@ public class Presentacion {
 		int superficie = 0;
 		System.out.print("""
 				\n DATOS DE SUPERFICIE.  \n
-				\t Introduce el tamaño de la superficie a solar: """);
+				\t Tamanio del lado de la superficie del solar: 
+				""");
 		sc = new Scanner(System.in);
 		superficie = sc.nextInt();
 		if ( superficie < 0 ) {
@@ -93,7 +89,21 @@ public class Presentacion {
 		return superficie;				
 	}
 	/**
-	 * Menu con el lado de la baldosa
+	 * Menu con la cantidad de baldosas disponibles.
+	 * 
+	 * Metodo que solicita al usuario la cantidad de baldosas que quiere dar de alta.
+	 * @return cantidad
+	 */
+	private static int cantBaldosas() {
+		System.out.print("""
+				\n CANTIDAD DE BALDOSAS. \n
+				\t Introduzca la cantidad de baldosas que quiere dar de alta: \n
+				""");
+		int cantidad = sc.nextInt();				
+		return cantidad;
+	}
+	/**
+	 * Menu con el listado del lado de la baldosa
 	 * 
 	 * Metodo que guarda los tipos de baldosas cuadradas disponibles a partir del lado, proporcionado por el usuario. 
 	 * @return lbaldosas
@@ -101,7 +111,7 @@ public class Presentacion {
 	private static int[] datosBaldosa() {
 		System.out.print("""
 				\n DATOS DE LAS BALDOSAS. \n		
-				\t Escriba el lado de las baldosas, separados por comas: \n
+				\t Escriba el lado de las baldosas: \n
 					""");
 		String datos = sc.nextLine();
 		String[] ladosString = datos.split(",");
@@ -114,51 +124,22 @@ public class Presentacion {
 	/**
 	 * Metodo crearColaBaldosas.
 	 * 
-	 * Crea una cola que contenga los valores de las áreas de todas las posibles baldosas que se pueden formar con ese tamaño de lado.
-	 * Se usa un bucle y calcula el valor de 'j' en cada iteración, reduciendo la cantidad de iteraciones. Además, usa un conjunto HastSet 
-	 * llamado 'areas' para mantener un registro de las áreas que ya se han agregado, reduciendo la cantidad de operaciones de búsqueda en 
-	 * la cola. 
-	 * Finalmente, la cola se define como una PriorityQueue, lo que elimina la necesidad de ordenar los elementos después.
-	 * @param lado
-	 * @return cola
+	 * Metodo que solicita al usuario el valor de los lados de las baldosas que usará el sistema.
+	 * @param cantidad
+	 * @return lista
 	 */
-	private static List<Integer> crearColaBaldosas(int[] ladoDado) {
-		List<Integer> cola = new ArrayList<>();
-		Set<Integer> areas = new HashSet<>();
-        for (int lado : ladoDado) {
-    		int area = lado * lado;
-    		if ( !areas.contains(area)) {
-    			cola.add(area);
-    			areas.add(area);
-    		}
-        }
-        Collections.sort(cola);
-        return cola;
-	}
-	/**
-	 * Metodo cubrirSuperficie
-	 * 
-	 * Metodo de calculo para la resolucion del numero de baldosas utilizadas para cubrir la superficie dada.
-	 * @param superficie
-	 * @param cola
-	 * @return bUsadas
-	 */
-	private static List<Integer> cubrirSuperficie(int superficie, List<Integer> cola) {		
-		List<Integer> bUsadas = new ArrayList<>();
-		while ( superficie > 0 ) {
-			int i = cola.size() - 1 ;
-			while ( i >= 0 && cola.get(i) > superficie  ) {
-				i--;
-			}
-			if ( i >= 0 ) {
-				int baldosa = cola.get(i);
-				bUsadas.add(baldosa);
-				superficie -= baldosa;				
-			} else {
-				System.out.println("Error. No hay baldosas disponibles que quepan en la superficie restante.");				
-			}
+	private static int[] crearColaBaldosas(int cantidad) {
+		int[] lista = new int[cantidad];
+		int input = 0;
+		System.out.println("\n ALTA BALDOSAS. \n");
+		for ( int i = 0; i < lista.length; i++) {
+			System.out.printf("Introduzca el lado para la baldosa nº %d ",i);
+			sc = new Scanner(System.in);
+			input = sc.nextInt();
+			lista[i] = input;
 		}
-		return bUsadas;				
+		
+		return lista;
 	}
 }
 
@@ -201,7 +182,7 @@ class MiException extends Exception {
 				===================================================== \n
 				\t\t WARNING!!! \n 
 				Medida invalida. \n
-				El numero introducido es cero. \n
+				El numero introducido es cero. El programa no puede procesarlo. \n
 				===================================================== \n
 				""");		
 	}

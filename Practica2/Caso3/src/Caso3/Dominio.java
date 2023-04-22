@@ -1,116 +1,93 @@
 package Caso3;
 import java.util.*;
 
+import subC_Pau.*;
+
 public class Dominio {
-    /*public static void Dominio(int size_solar, int[] listado_baldosas ) {    	
-        soladoSuperficie(size_solar , listado_baldosas);        
-    }
-    */
-    public static void main(String[] args) {
-        int n = 10; // Tamaño del cuadrado principal
-        int[] tamaniosBaldosas = {5, 3, 2}; // Tamaños de los cuadrados de relleno
-        soladoSuperficie(n, tamaniosBaldosas);
-    }
-
-    private static void soladoSuperficie(int n, int[] tamaniosBaldosas) {
-        List<Integer> colaBaldosas = crearColaBaldosas(tamaniosBaldosas);
-        int[] cantidadesBaldosas = new int[tamaniosBaldosas.length];
-        int areaRestante = n * n;
-        while (areaRestante > 0) {
-            int baldosa = seleccionarBaldosa(colaBaldosas, areaRestante);
-            int cantidadBaldosas = areaRestante / baldosa;
-            int indiceTamanioBaldosa = buscarIndiceTamanioBaldosa(tamaniosBaldosas, baldosa);
-            cantidadesBaldosas[indiceTamanioBaldosa] += cantidadBaldosas;
-            areaRestante -= baldosa * cantidadBaldosas;
+    public static void dominio(int ladoFinca, int[] listadoLadoBaldosas) {
+        ladoFinca = 9;
+        int[][] finca = new int[ladoFinca][ladoFinca];        
+        for (int i = 0 ; i < listadoLadoBaldosas.length; i++) {
+        	Cultivo[] cultivos = {
+            		new Cultivo (i)      	
+            };
+	        
+	        // Ordenamos de mayor a menor
+	        Arrays.sort(cultivos);
+	        // Recorremos el array y lo pasado al metodo de distribucion de 
+	        for (Cultivo cultivando : cultivos) {
+	        	distribuirCultivos(finca, cultivando.getTam(),cultivando.getTam());        
+	        }
+	        // Imprimir el cuadrado inicial
+	        for	( int j = 0; j < ladoFinca; j++) {
+	        	for ( int k = 0; k < ladoFinca; k++ ) {
+	        		System.out.print(" *");
+	        	}
+	        	System.out.println();
+	        }
+	        System.out.println("\n________________________________________________________________________\n");        
+	        // Imprimir resultado
+	        for (int l = 0; l < ladoFinca; l++) {
+	            for (int j = 0; j < ladoFinca; j++) {
+	            	// Verifica el valor de la posicion i,j en la matriz. 
+	            	// 1) Si el valor es 0 entonces imprime '*' --> seccion vacía
+	            	// 2) Si es diferente imprime el valor asignado
+	                System.out.print(finca[l][j] == 0 ? " L" : " O");
+	            }
+	            System.out.println();
+	        }
         }
-        dibujarCuadrado(n, tamaniosBaldosas, cantidadesBaldosas);
-    }
-
-    private static List<Integer> crearColaBaldosas(int[] tamaniosBaldosas) {
-        List<Integer> colaBaldosas = new ArrayList<Integer>();
-        for (int i = 0; i < tamaniosBaldosas.length; i++) {
-            colaBaldosas.add(tamaniosBaldosas[i]);
-        }
-        Collections.sort(colaBaldosas, Collections.reverseOrder());
-        return colaBaldosas;
-    }
-
-    private static int seleccionarBaldosa(List<Integer> colaBaldosas, int areaRestante) {
-        for (int i = colaBaldosas.size() - 1; i >= 0; i--) {
-            if (colaBaldosas.get(i) <= areaRestante) {
-                return colaBaldosas.get(i);
-            }
-        }
-        return -1; // En caso de error
-    }
-
-    private static int buscarIndiceTamanioBaldosa(int[] tamaniosBaldosas, int baldosa) {
-        for (int i = 0; i < tamaniosBaldosas.length; i++) {
-            if (tamaniosBaldosas[i] == baldosa) {
-                return i;
-            }
-        }
-        return -1; // En caso de error
-    }
-    private static void dibujarCuadrado(int n, int[] tamaniosBaldosas, int[] cantidadesBaldosas) {
-    	System.out.println("n = " + n);	
-	    int[][] cuadrado = new int[n][n];
-	    System.out.println("cuadrado.length = " + cuadrado.length);
-	    System.out.println("cuadrado[0].length = " + cuadrado[0].length);
-        // Crear cuadrado inicial
-        // int[][] cuadrado = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                cuadrado[i][j] = 0;
-            }
-        }
-        
-        // Mostrar cuadrado inicial
-        System.out.println("Cuadrado inicial:");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                System.out.print(cuadrado[i][j] + "#");
-            }
-            System.out.println();
-        }
-        System.out.println();
-        
-        // Llenar cuadrado con baldosas
-        int fila = 0;
-        int columna = 0;
-        for (int i = 0; i < tamaniosBaldosas.length; i++) {
-            int cantidadBaldosas = cantidadesBaldosas[i];
-            for (int j = 0; j < cantidadBaldosas; j++) {
-                int tamBaldosa = tamaniosBaldosas[i];
-                for (int k = fila; k < fila + tamBaldosa; k++) {
-                    for (int l = columna; l < columna + tamBaldosa && l < n; l++) {
-                        cuadrado[k][l] = tamBaldosa;
-                    }
-                }
-                columna += tamBaldosa;
-                if (columna >= n) {
-                    fila += tamBaldosa;
-                    columna = 0;
-                }
-            }
-        }
-        
-        // Mostrar cuadrado final
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                int tamBaldosa = cuadrado[i][j];
-                for (int k = 0; k < tamBaldosa; k++) {
-                    for (int l = 0; l < tamBaldosa; l++) {
-                        if (k == 0 || l == 0) {
-                            System.out.print(tamBaldosa + " ");
-                        } else {
-                            System.out.print("  ");
+    }    
+    private static void distribuirCultivos(int[][] finca, int tamCultivo, int tamCultivoActual) {
+        int ladoFinca = finca.length;
+        int numCuadrosPorLado = ladoFinca / tamCultivo; // Calcular el número de cuadros por lado que se necesitan        
+        // Iterar sobre cada cuadro de la finca
+        for (int i = 0; i < numCuadrosPorLado; i++) {
+            for (int j = 0; j < numCuadrosPorLado; j++) {
+                boolean puedeColocar = true;                
+                // Verificar que el espacio está libre
+                for (int k = i * tamCultivo; k < (i + 1) * tamCultivo; k++) {
+                    for (int l = j * tamCultivo; l < (j + 1) * tamCultivo; l++) {
+                        if (finca[k][l] != 0) { // Si hay un cultivo ya en ese espacio
+                            puedeColocar = false; // No se puede colocar el nuevo cultivo
+                            break; // Salir del ciclo interno
                         }
                     }
-                    System.out.println();
+                    if (!puedeColocar) break; // Si no se puede colocar, salir del ciclo externo
+                }                
+                // Colocar el cultivo
+                if (puedeColocar) {
+                    for (int k = i * tamCultivo; k < (i + 1) * tamCultivo; k++) {
+                        for (int l = j * tamCultivo; l < (j + 1) * tamCultivo; l++) {
+                            finca[k][l] = tamCultivoActual; // Asignar el tamaño del cultivo en cada espacio del cuadro
+                        }
+                    }
                 }
             }
         }
     }
-
 }
+	/**
+	 * Utilizamos la interfaz Comparable para implementar el método compareTo de dicha interfaz.
+	 * En este caso, compareTo se usa para establecer un orden entre objetos y luego los comparamos, devolviendonos un valor si el
+	 * objeto actual es menor, igual o mayor que el objeto comparado. 
+	 * @see Comparable
+	 * @author pauli
+	 *
+	 */
+    class Cultivo implements Comparable<Cultivo> {
+    	private int t;
+    	// Getter y setter del compareTo para cultivo
+    	public Cultivo(int t) {
+    		this.t = t;
+    	}
+    	
+    	public int getTam () {
+    		return t;
+    	}
+    	@Override
+    	public int compareTo(Cultivo otro) {
+    		// Ordenar por tamaño de forma desendente.
+    		return otro.t -t ;
+    	}
+    }
