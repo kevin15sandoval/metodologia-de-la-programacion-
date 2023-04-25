@@ -1,4 +1,4 @@
-package Becas2;
+package Caso3;
 
 import java.util.Arrays;
 import java.util.Scanner;
