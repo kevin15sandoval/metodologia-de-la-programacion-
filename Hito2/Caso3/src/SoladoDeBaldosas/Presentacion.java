@@ -17,18 +17,22 @@ import java.util.Scanner;
  */
 public class Presentacion {
 	
-	/*
-	 * ##~~~#~~####~~######~##~~##
-	 * ###~##~##~~##~~~##~~~###~##
-	 * ##~#~#~######~~~##~~~##~###
-	 * ##~~~#~##~~##~~~##~~~##~~##
-	 * ##~~~#~##~~##~######~##~~##
-	 * 
-	 */
+/* *****************************
+ * 
+ * ##~~~#~~####~~######~##~~##
+ * ###~##~##~~##~~~##~~~###~##
+ * ##~#~#~######~~~##~~~##~###
+ * ##~~~#~##~~##~~~##~~~##~~##
+ * ##~~~#~##~~##~######~##~~##
+ *  
+ ********************************
+ */
 	public static void main(String[] args) {	
 		menuPrincipal();		
 	}
-	
+	/**
+	 * menuPrincipal del programa
+	 */
 	public static void menuPrincipal() {
 		try (
 			// Establecemos un Scanner, el cual lo utilizaremos para introducir los datos
@@ -49,19 +53,16 @@ public class Presentacion {
 				// manera asignar el tamaño al array de tamaños de baldosas
 				System.out.println("Introduzca el numero de baldosas disponibles");
 				int baldosas = leer.nextInt();
-				if (baldosas < 0) {
-					//System.out.println("El numero tiene que ser mayor que cero, vuelvalo a introducirlo por favor");
+				if (baldosas < 0) {					
 					MiException.exNumNegativo();
 					System.exit(1);
 				} // end if
-					// Declaramos el array que utilizaremos para guardar el tamaño de las baldosas
-					// disponibles
+					// Declaramos el array que utilizaremos para guardar el tamaño de las baldosas disponibles
 				int[] tamanios = new int[baldosas];
 				// Realizamos un for para ir guardando el valor de las baldosas en el array
 				for (int i = 0; i < tamanios.length; i++) {
 					System.out.println("Introduzca el tamanio de la baldosa " + (i + 1));
-					// Asignamos que en la posicion i del array se vaya colocando el tamaño que el
-					// usuario vaya designando
+					// Asignamos que en la posicion i del array se vaya colocando el tamaño que el usuario vaya designando
 					tamanios[i] = leer.nextInt();
 					if (tamanios[i] <= 0) {
 						MiException.exNumNegativo();
@@ -98,10 +99,10 @@ public class Presentacion {
 
 class MiException extends Exception {
 	/**
-	 * Implementaci�n de interfaz serializable. Las clases que implementan este interfaz son susceptibles de ser serializables (guardadas en disco)
+	 * Implementacion de interfaz serializable. Las clases que implementan este interfaz son susceptibles de ser serializables (guardadas en disco)
 	 * Los atributos del objeto se convierten en cadenas de bytes y se guardan en el disco. Para leer un objeto, se leen las cadenas de bytes y se reconstruye
 	 * el objeto a partir de ellos.
-	 * Source: https://howtodoinjava.com/java/serialization/serialversionuid/
+	 * @see Source: https://howtodoinjava.com/java/serialization/serialversionuid/
 	 */
 	private static final long serialVersionUID = 1L;	
 	/**
