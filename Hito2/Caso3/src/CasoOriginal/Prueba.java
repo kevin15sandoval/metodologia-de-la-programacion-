@@ -138,7 +138,6 @@ public class Prueba {
 				// si no encontramos una posicion disponible para esta baldosa, se pasa siguiente tamano.
 				if (!encontrada) {
 					break;
-				
 				}
 			
 			}
