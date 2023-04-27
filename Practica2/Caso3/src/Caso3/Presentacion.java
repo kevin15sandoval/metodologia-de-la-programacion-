@@ -11,11 +11,11 @@ import java.util.Set;
  * Solado eco.
  * Necesitamos solar una superficie cuadrada de n metros de lado.
  * A tal efecto,contratamos a los hermanos Scott,unos instaladores reformistas con amplia experiencia,para realizar el trabajo.
- * Para el solado podemos elegir diferentes baldosas cuadradas de s0,s1,s2,… metros de lado. <br>
- * Gracias a sus contactos profesionales, los hermanos Scott pueden conseguir las baldosas al mismo precio por baldosa independientemente del tamaño. 
- * Además, pueden conseguir la cantidad necesaria de baldosas de cualquier tamaño. Para reducir costes, pretendemos utilizar tan pocas baldosas como sea posible 
- * y por razones estéticas queremos usar baldosas enteras (aunque se mezclen tamaños).
- * @author pauli
+ * Para el solado podemos elegir diferentes baldosas cuadradas de s0,s1,s2,ï¿½ metros de lado. <br>
+ * Gracias a sus contactos profesionales, los hermanos Scott pueden conseguir las baldosas al mismo precio por baldosa independientemente del tamano. 
+ * Ademas, pueden conseguir la cantidad necesaria de baldosas de cualquier tamano. Para reducir costes, pretendemos utilizar tan pocas baldosas como sea posible 
+ * y por razones esteticas queremos usar baldosas enteras (aunque se mezclen tamanios).
+ * @author paulino
  * @version 0.1
  *
  */
@@ -54,7 +54,7 @@ public class Presentacion {
 	 * Metodo para el mensaje de Bienvenida
 	 * 
 	 * Imprime el mensaje de bienvenida de plataformado de un suelo a partir de baldosas cuadradas.
-	 * El programa busca la cantidad mínima de baldosas necesarias para cubrir la superficie proporcionada por el usuario.
+	 * El programa busca la cantidad minima de baldosas necesarias para cubrir la superficie proporcionada por el usuario.
 	 * @throws InterruptedException 
 	 */
 	private static void bienvenida() throws InterruptedException {
@@ -63,10 +63,10 @@ public class Presentacion {
 				\t\t =============================================================== \n
 				\t\t BIENVENIDO AL SOLADO ECONOMICO DE LOS HERMANOS SCOOT. \n
 				\t\t =============================================================== \n
-				\t\t El programa busca la cantidad mínima de baldosas necesarias para cubrir una superficie cuadrada. \n 
+				\t\t El programa busca la cantidad minima de baldosas necesarias para cubrir una superficie cuadrada. \n 
 				\t\t Para que funcione correctamnete, es necesario que proporciones: \n 
 				\t\t\t  1- Medidas de la superficie. \n 
-				\t\t\t  2- Tamaño de las baldosas. \n
+				\t\t\t  2- Tamanio de las baldosas. \n
 				""");
 		Thread.sleep(3000);
 	}
@@ -80,7 +80,7 @@ public class Presentacion {
 		int superficie = 0;
 		System.out.print("""
 				\n DATOS DE SUPERFICIE.  \n
-				\t Introduce el tamaño de la superficie a solar: """);
+				\t Introduce el tamanio de la superficie a solar: """);
 		sc = new Scanner(System.in);
 		superficie = sc.nextInt();
 		if ( superficie < 0 ) {
@@ -114,11 +114,11 @@ public class Presentacion {
 	/**
 	 * Metodo crearColaBaldosas.
 	 * 
-	 * Crea una cola que contenga los valores de las áreas de todas las posibles baldosas que se pueden formar con ese tamaño de lado.
-	 * Se usa un bucle y calcula el valor de 'j' en cada iteración, reduciendo la cantidad de iteraciones. Además, usa un conjunto HastSet 
-	 * llamado 'areas' para mantener un registro de las áreas que ya se han agregado, reduciendo la cantidad de operaciones de búsqueda en 
+	 * Crea una cola que contenga los valores de las areas de todas las posibles baldosas que se pueden formar con ese tamanio de lado.
+	 * Se usa un bucle y calcula el valor de 'j' en cada iteracion, reduciendo la cantidad de iteraciones. Ademas, usa un conjunto HastSet 
+	 * llamado 'areas' para mantener un registro de las areas que ya se han agregado, reduciendo la cantidad de operaciones de busqueda en 
 	 * la cola. 
-	 * Finalmente, la cola se define como una PriorityQueue, lo que elimina la necesidad de ordenar los elementos después.
+	 * Finalmente, la cola se define como una PriorityQueue, lo que elimina la necesidad de ordenar los elementos despues.
 	 * @param lado
 	 * @return cola
 	 */
@@ -175,7 +175,7 @@ public class Presentacion {
 
 class MiException extends Exception {
 	/**
-	 * Implementación de interfaz serializable. Las clases que implementan este interfaz son susceptibles de ser serializables (guardadas en disco)
+	 * Implementacion de interfaz serializable. Las clases que implementan este interfaz son susceptibles de ser serializables (guardadas en disco)
 	 * Los atributos del objeto se convierten en cadenas de bytes y se guardan en el disco. Para leer un objeto, se leen las cadenas de bytes y se reconstruye
 	 * el objeto a partir de ellos.
 	 * Source: https://howtodoinjava.com/java/serialization/serialversionuid/
