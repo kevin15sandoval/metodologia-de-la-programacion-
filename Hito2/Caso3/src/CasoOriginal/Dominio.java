@@ -1,4 +1,4 @@
-package Caso3;
+package CasoOriginal;
 
 public class Dominio {
     public static void Dominio() {

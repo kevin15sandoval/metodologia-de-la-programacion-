@@ -1,4 +1,4 @@
-package Becas2;
+package Caso4;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Becas2;
+package Caso4;
 
 /**
  * Clase beca que contiene los atributos de la beca, constructor y getters/setters.
@@ -6,7 +6,7 @@ package Becas2;
  * @author Paulino Bermudez, Kevin Gomez, Andres Diaz, German Pajarero
  */
 
-public class Beca {
+ public class Beca {
     private int mesInicio;
     private int mesFin;
     private int salario;

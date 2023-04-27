@@ -21,7 +21,6 @@ import java.util.List;
 	        for (int i = 0; i < solucion.size(); i++) {
 	            System.out.println(solucion.get(i).toString());
 	        }
-           // System.out.println("Elbeneficio total es: " + planificador.getSalarioTotal() + "€");
 	    }
 	}
 

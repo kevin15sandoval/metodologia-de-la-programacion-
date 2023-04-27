@@ -1,48 +1,50 @@
-package Caso3;
+package CasoOriginal;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class pureba {
-
 	/**
-	 * Método principal para probar el algoritmo.
+	 * Clase que contiene el metodo main, el cual es el encargado de ejecutar el programa
 	 *
+	 * @version 1.0
+	 * @author Paulino Bermudez, Kevin Gomez, Andres Diaz, German Pajarero
 	 */
+
+public class Prueba {
 	public static void main(String[] args) {
 		// Establecemos un Scanner, el cual lo utilizaremos para introducir los datos
-		// necesarios desde le teclado
+		// necesarios desde el teclado
 		Scanner leer = new Scanner(System.in);
 		int metros;
 		do {
-		    System.out.println("¿De qué tamaño en m2 es la superficie?");
+		    System.out.println("Tamanio en m2 es la superficie?");
 		    metros = leer.nextInt();
 		    if (metros < 0) {
-		        System.out.println("El número tiene que ser mayor que cero, vuelva a introducirlo por favor");
+		        System.out.println("El numero tiene que ser mayor que cero, vuelva a introducirlo por favor");
 		    }
 		} while (metros < 0);
 
 
 		// Preguntamos al usuario la cantidad de baldosas que dispone para de esta
-		// manera asignar el tamaño al array de tamaños de baldosas
-		System.out.println("Introduzca el número de baldosas disponibles");
+		// manera asignar el tamanio al array de tamanios de baldosas
+		System.out.println("Introduzca el numero de baldosas disponibles");
 		int baldosas = leer.nextInt();
 		if (baldosas < 0) {
 			System.out.println("El numero tiene que ser mayor que cero, vuelvalo a introducirlo por favor");
 			main(args);
 		} // end if
-			// Declaramos el array que utilizaremos para guardar el tamaño de las baldosas
+			// Declaramos el array que utilizaremos para guardar el tamaï¿½o de las baldosas
 			// disponibles
 		int[] tamanios = new int[baldosas];
 		// Realizamos un for para ir guardando el valor de las baldosas en el array
 		for (int i = 0; i < tamanios.length; i++) {
-			System.out.println("Introduzca el tamaño de la baldosa " + (i + 1));
-			// Asignamos que en la posición i del array se vaya colocando el tamaño que el
+			System.out.println("Introduzca el tamanio de la baldosa " + (i + 1));
+			// Asignamos que en la posicion i del array se vaya colocando el tamanio que el
 			// usuario vaya designando
 			tamanios[i] = leer.nextInt();
 		} // end for
-			// Mostramos información al usuario de lo que dispone
-		System.out.print("Usted dispone de " + baldosas + " tamaños de baldosas:\n");
+			// Mostramos informacion al usuario de lo que dispone
+		System.out.print("Usted dispone de " + baldosas + " tamanos de baldosas:\n");
 		for (int i = 0; i < tamanios.length; i++) {
 			System.out.print(i + 1 + ") " + tamanios[i] + "m2\n ");
 		}
@@ -55,15 +57,15 @@ public class pureba {
 
 	/**
 	 * Resuelve el problema de solado de una superficie cuadrada con diferentes
-	 * tamaños de baldosas mediante un algoritmo voraz.
+	 * tamanos de baldosas mediante un algoritmo voraz.
 	 *
 	 * @param metros           el lado de la superficie a solar en metros.
-	 * @param tamaniosBaldosas los distintos tamaños de baldosas disponibles, en
+	 * @param tamaniosBaldosas los distintos tamanos de baldosas disponibles, en
 	 *                         metros.
-	 * @return una matriz que representa la disposición de las baldosas en la
-	 *         superficie. Cada elemento de la matriz es un número que indica el
-	 *         tamaño de la baldosa utilizada en esa posición, o 0 si la posición
-	 *         está vacía.
+	 * @return una matriz que representa la disposicion de las baldosas en la
+	 *         superficie. Cada elemento de la matriz es un numero que indica el
+	 *         tamano de la baldosa utilizada en esa posicion, o 0 si la posicion
+	 *         esta vacia.
 	 */
 	public static int[][] solado(int metros, int[] tamaniosBaldosas) {
 		// creamos un array bidimensional para recrear la superficie en m2
@@ -80,55 +82,51 @@ public class pureba {
 		int fila = 0;
 		// ordenamos las baldosas de mayor a menor
 		Arrays.sort(tamaniosBaldosas);
-		// Creamos un bucle for que recorre los tamaños de baldosas desde el más grande
-		// hasta el más pequeño.
+		// Creamos un bucle for que recorre los tamanos de baldosas desde el mas grande
+		// hasta el mas pequeno.
 		for (int i = tamaniosBaldosas.length - 1; i >= 0; i--) {
-			// creamos una variable tamaño para conocer el tamaño de la baldosa en esa
+			// creamos una variable tamano para conocer el tamano de la baldosa en esa
 			// posicion del array
 			int tamanio = tamaniosBaldosas[i];
 			// creamos un bucle while para ir recorriendo las filas de la matriz desde la
 			// primera a la ultima
 			while (fila < metros) {
 				// Creamos una e inicializamos la variable booleana "encontrada" como false, que
-				// se usará para saber
-				// si se encontró una posición disponible para colocar la baldosa y nos ayudara
-				// a controlar los for's mas adelnate.
+				// se usa para saber si se encontro una posicion disponible para colocar la baldosa y nos ayudara
+				// a controlar los for's mas adelante.
 				boolean encontrada = false;
 				// Este bucle for recorre las filas de la matriz desde la primera hasta la
-				// última posible posición de una baldosa del tamaño actual. Si la baldosa no
-				// cabe
-				// en la última fila posible, entonces no tiene sentido buscar más allá de esa
-				// fila.
-				// La condición !encontrada indica que si ya se encontró una posición para
-				// colocar la baldosa, no se debe seguir buscando.
+				// ultima posible posicion de una baldosa del tamanio actual. Si la baldosa no
+				// cabe en la ultima fila posible, entonces no tiene sentido buscar mas alla de es fila.
+				// La condicion encontrada indica que si ya se encontro una posicion para colocar la baldosa, no se debe seguir buscando.
 				for (int filas = 0; filas < metros - tamanio + 1 && !encontrada; filas++) {
 					// Este bucle for hace lo mismo que el anterior solamente que en las columnas
 					// "columnas < metros - tamanio + 1" se utiliza para garantizar que se recorran
-					// únicamente las columnas dentro de los límites de la matriz, teniendo en
+					// unicamente las columnas dentro de los limites de la matriz, teniendo en
 					// cuenta
-					// el tamaño de la baldosa que se está colocando si no esto provocaria un
+					// el tamano de la baldosa que se esta colocando si no esto provocaria un
 					// desbordadmiento.
 					for (int columnas = 0; columnas < metros - tamanio + 1 && !encontrada; columnas++) {
-						// Esta línea comprueba si la posición actual de la matriz está disponible
+						// Esta linea comprueba si la posicion actual de la matriz esta disponible
 						// (valor 0).
-						// Si es así, significa que se puede colocar una baldosa en esa posición.
+						// Si es asi, significa que se puede colocar una baldosa en esa posicion.
 						//if (superficie[filas + tamaniosBaldosas[i]][columnas] == 0) {
 							//if (superficie[filas][columnas + tamaniosBaldosas[i]] == 0) {
 								//if (superficie[filas + tamaniosBaldosas[i]][columnas + tamaniosBaldosas[i]] == 0) {
 
 									// }
 									 if (superficie[filas][columnas] == 0) {
-									// Creamos dos bucles for para colocar la baldosa en la posición actual de la
+									// Creamos dos bucles for para colocar la baldosa en la posicion actual de la
 									// matriz, llenando los elementos
-									// correspondientes con el tamaño de la baldosa.
+									// correspondientes con el tamanio de la baldosa.
 									for (int m = filas; m < filas + tamanio; m++) {
 										for (int n = columnas; n < columnas + tamanio; n++) {
 											superficie[m][n] = tamanio;
 										} // end for
 									} // end for
-										// Ahora actualizamos la última fila ocupada por la baldosa y cambian el valor
+										// Ahora actualizamos la ultima fila ocupada por la baldosa y cambian el valor
 										// de encontrada a true,
-										// para asi informar que se encontró una posición para colocar la baldosa.
+										// para asi informar que se encontro una posicion para colocar la baldosa.
 									fila = filas + tamanio - 1;
 									encontrada = true;
 								} // end if
@@ -137,20 +135,20 @@ public class pureba {
 						//} // end if
 					} // end for columnas
 				} // end for filas
-				// si no encontramos una posición disponible para esta baldosa, se pasa
-				// siguiente tamaño.
+				// si no encontramos una posicion disponible para esta baldosa, se pasa siguiente tamano.
 				if (!encontrada) {
 					break;
 				
-				} // end if
+				}
 			
-			} // end while
-		} // end for tamaño baldosa
+			}
+		}
 
 		return superficie;
-	}// end class solado
+	}
+	
 	/**
-	 * Método auxiliar para imprimir una matriz en la consola.
+	 * Metodo auxiliar para imprimir una matriz en la consola.
 	 *
 	 * @param matriz la matriz a imprimir.
 	 */
@@ -160,9 +158,8 @@ public class pureba {
 			// recorremos las columnas
 			for (int columnas = 0; columnas < matriz[filas].length; columnas++) {
 				System.out.print(matriz[filas][columnas] + " ");
-			} // end for columnas
+			}
 			System.out.println();
-		} // end for filas
-	}// end class
-
+		}
+	}
 }
