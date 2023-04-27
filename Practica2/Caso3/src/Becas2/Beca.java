@@ -24,7 +24,7 @@ public class Beca {
         return salario;
     }
     public String toString() {
-        return "Iniciando en el mes " + mesInicio + " hasta el mes " + mesFin + " con un salario de " + salario + "€" ;
+        return "Iniciando en el mes " + mesInicio + " hasta el mes " + mesFin + " con un salario de " + salario + "â‚¬" ;
     }
 
 }
