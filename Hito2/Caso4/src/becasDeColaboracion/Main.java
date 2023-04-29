@@ -1,4 +1,4 @@
-package Becas2;
+package becasDeColaboracion;
 
 import java.util.ArrayList;
 import java.util.List;

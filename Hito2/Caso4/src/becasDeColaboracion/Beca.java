@@ -1,4 +1,4 @@
-package Caso4;
+package becasDeColaboracion;
 
 /**
  * Clase beca que contiene los atributos de la beca, constructor y getters/setters.

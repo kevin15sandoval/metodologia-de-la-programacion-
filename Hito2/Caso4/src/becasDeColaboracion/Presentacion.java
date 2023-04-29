@@ -1,4 +1,4 @@
-package Caso4;
+package becasDeColaboracion;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +18,7 @@ public class Presentacion {
         // @German: muestro por pantalla los datos de las becas.
         System.out.println("Beca <n>: <inicio> <fin> <cantidad>\n");
         for (int i = 0; i < numBecas; i++) {
-            System.out.printf("Beca %d: %d %d %d\n", i, becas[i].getInicio(), becas[i].getFin(), becas[i].getCantidad());
+           // System.out.printf("Beca %d: %d %d %d\n", i, becas[i].getMesInicio(), becas[i].getMesFin(), becas[i].getCantidad());
         }
 
     }
@@ -59,9 +59,9 @@ public class Presentacion {
 
             for (int i = 0; i < numBecas; i++) {
                 sc.nextInt();
-                becas[i].setInicio(sc.nextInt());
+               /* becas[i].setInicio(sc.nextInt());
                 becas[i].setFin(sc.nextInt());
-                becas[i].setCantidad(sc.nextInt());
+                becas[i].setCantidad(sc.nextInt());*/
             }
             sc.close();
 
