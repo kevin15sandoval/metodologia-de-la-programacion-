@@ -2,15 +2,15 @@ package becasDeColaboracion;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 public class PlanificadorBecas {
-    private List<Beca> becas;
+    private List<int[]> becas;
     private List<Beca> solucionActual;
     private int salarioMaximo;
     private int salarioTotal;
 
-    public PlanificadorBecas(List<Beca> becas) {
-        this.becas = becas;
+    public PlanificadorBecas(ArrayList<int[]> becas2) {
+        this.becas = becas2;
         this.solucionActual = new ArrayList<>();
         this.salarioMaximo = 0;
         this.salarioTotal = 0;
@@ -26,7 +26,7 @@ public class PlanificadorBecas {
             procesarSolucion(candidatos, salarioActual);
         } else {
             for (int i = 0; i < becas.size(); i++) {
-                Beca beca = becas.get(i);
+                int[] beca = becas.get(i);
                 if (esValido(beca, candidatos) && !seSolapa(beca, candidatos)) {
                     candidatos.add(beca);
                     resolver(candidatos, salarioActual + beca.getSalario());
@@ -68,7 +68,7 @@ public class PlanificadorBecas {
     }
 
 
-    public boolean esValido(Beca beca, List<Beca> candidatos) {
+    public boolean esValido(int[] beca, List<Beca> candidatos) {
         int mesInicioBeca = beca.getMesInicio();
         int mesFinBeca = beca.getMesFin();
 
@@ -89,3 +89,4 @@ public class PlanificadorBecas {
         return salarioTotal;
     }
 }
+*/
