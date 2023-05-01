@@ -7,6 +7,7 @@ package becasDeColaboracion;
  */
 
  public class Beca {
+	private int id;
     private int mesInicio;
     private int mesFin;
     private int salario;
@@ -18,7 +19,8 @@ package becasDeColaboracion;
      * @param salario
      */
 
-    public Beca(int mesInicio, int mesFin, int salario) {
+    public Beca(int id, int mesInicio, int mesFin, int salario) {
+    	this.id = id;
         this.mesInicio = mesInicio;
         this.mesFin = mesFin;
         this.salario = salario;
@@ -28,6 +30,10 @@ package becasDeColaboracion;
      * Getters y setters de la clase beca
      * @return
      */
+
+    public int getId() {
+        return id;
+    }
 
     public int getMesInicio() {
         return mesInicio;
@@ -41,6 +47,6 @@ package becasDeColaboracion;
         return salario;
     }
     public String toString() {
-        return "Iniciando en el mes " + mesInicio + " hasta el mes " + mesFin + " con un salario de " + salario + "€" ;
+        return "Beca nº " + id + " - Iniciando en el mes " + mesInicio + " hasta el mes " + mesFin + " con un salario de " + salario + "€" ;
     }
 }

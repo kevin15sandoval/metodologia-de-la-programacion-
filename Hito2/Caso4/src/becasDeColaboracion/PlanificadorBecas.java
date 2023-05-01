@@ -2,15 +2,15 @@ package becasDeColaboracion;
 
 import java.util.ArrayList;
 import java.util.List;
-/*
+
 public class PlanificadorBecas {
-    private List<int[]> becas;
+    private List<Beca> becas;
     private List<Beca> solucionActual;
     private int salarioMaximo;
     private int salarioTotal;
 
-    public PlanificadorBecas(ArrayList<int[]> becas2) {
-        this.becas = becas2;
+    public PlanificadorBecas(List<Beca> becas) {
+        this.becas = becas;
         this.solucionActual = new ArrayList<>();
         this.salarioMaximo = 0;
         this.salarioTotal = 0;
@@ -26,7 +26,7 @@ public class PlanificadorBecas {
             procesarSolucion(candidatos, salarioActual);
         } else {
             for (int i = 0; i < becas.size(); i++) {
-                int[] beca = becas.get(i);
+                Beca beca = becas.get(i);
                 if (esValido(beca, candidatos) && !seSolapa(beca, candidatos)) {
                     candidatos.add(beca);
                     resolver(candidatos, salarioActual + beca.getSalario());
@@ -64,20 +64,22 @@ public class PlanificadorBecas {
     public void procesarSolucion(List<Beca> candidatos, int salarioActual) {
         solucionActual = new ArrayList<>(candidatos);
         salarioMaximo = salarioActual;
-        //salarioTotal += salarioActual; // Suma el salario actual al salario total existente
+        salarioTotal += salarioActual; // Suma el salario actual al salario total existente
+        if (salarioActual > salarioMaximo) {
+        	salarioMaximo = salarioActual;
+        }
     }
 
 
-    public boolean esValido(int[] beca, List<Beca> candidatos) {
+    public boolean esValido(Beca beca, List<Beca> candidatos) {
         int mesInicioBeca = beca.getMesInicio();
         int mesFinBeca = beca.getMesFin();
 
         for (Beca candidata : candidatos) {
             int mesInicioCandidata = candidata.getMesInicio();
-            int mesFinCandidata = candidata.getMesFin();
-
+            int mesFinCandidata = candidata.getMesFin();            
             if ((mesInicioBeca >= mesInicioCandidata && mesInicioBeca <= mesFinCandidata) ||
-                (mesFinBeca >= mesInicioCandidata && mesFinBeca <= mesFinCandidata)) {
+                (mesFinBeca >= mesInicioCandidata && mesFinBeca <= mesFinCandidata) ) {
                 return false;
             }
         }
@@ -89,4 +91,6 @@ public class PlanificadorBecas {
         return salarioTotal;
     }
 }
-*/
+
+
+

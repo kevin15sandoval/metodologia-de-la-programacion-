@@ -1,115 +1,149 @@
 package becasDeColaboracion;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-	public class Main {
-	    public static void main(String[] args) {
-	    	/* Fichero de entrada */
-	    	final String ArchivoBecas = "BECAS.dat";
-	    	/* Lectura del fichero */
-	    	List<Beca> becas = leerFichero(ArchivoBecas);
-	    	
-	    	/*
-	    	 List<Beca> becas = new ArrayList<>();
-	    	 becas.add(new Beca(1, 4, 300));
-	    	becas.add(new Beca(3, 8, 100));
-	    	becas.add(new Beca(5, 6, 100));
-	    	becas.add(new Beca(6, 12, 200));
-	    	becas.add(new Beca(8, 12, 400));
-	    	becas.add(new Beca(7, 8, 500));
-	    	becas.add(new Beca(1, 12, 200));*/
-	    	
-/*
-	        PlanificadorBecas planificador = new PlanificadorBecas(becas);
-	        List<Beca> solucion = planificador.getSolucion();
-	        System.out.println("La combinacion de becas con mayor beneficio es el siguiente (ordenadas de mayor a menor): ");
-	        for (int i = 0; i < solucion.size(); i++) {
-	            System.out.println(solucion.get(i).toString());
-	        }
-*/	        
-	    }
-	    /**
-	     * Metodo de lectura del fichero.
-	     * @param nombreArchivo
-	     * @return
-	     */
-	    public static List<Beca> leerFichero(String nombreArchivo) {
-	    	final String FICHEROBECAS = "BECAS.dat";
-	    	@SuppressWarnings("unused")
-			int idBeca = 0,inicio = 0,fin =0,beneficioMensual = 0;
-	    	List<Beca> listaBecas = new ArrayList<>(); // ArrayList para almacenar los datos.
-	    	
-	    	try {
-	    		Scanner scanner = new Scanner(new File(FICHEROBECAS));
-	    		int nBecas = scanner.nextInt(); // Nº de becas
-	    		while ( scanner.hasNextInt()) {
-	    			idBeca = scanner.nextInt();
-	    			inicio = scanner.nextInt();
-	    			fin = scanner.nextInt();
-	    			beneficioMensual = scanner.nextInt();
-	    			Beca beca = new Becas(idBeca, inicio, fin, beneficioMensual);
-	    			listaBecas.add(beca);
-	    		}
-	    	} catch (IOException e) {
-	    		System.out.println("Error al leer el fichero  " + e.getMessage());
-	    	}
-	    	return listaBecas;
-	    }
-	}
-
-
-/**
- * 
- * import java.util.*;
-
-public class Gimnasio {
-
+public class Main {
     public static void main(String[] args) {
-        // Paso 1: Leer el archivo de texto y crear una lista de objetos Becas
-        List<Becas> Becases = leerArchivo("archivo.txt");
-
-        // Imprimir la lista de Becases leída del archivo para verificar
-        System.out.println("Lista de Becases leída del archivo:");
-        for (Becas Becas : Becases) {
-            System.out.println(Becas);
+    	/* Fichero de entrada */
+    	final String ArchivoBecas = "BECAS.dat";
+    	/* Lectura del fichero */
+    	List<Beca> becas = new ArrayList<>(); // Lista con los datos leídos    	
+    	becas = leerFichero(ArchivoBecas);
+        PlanificadorBecas planificador = new PlanificadorBecas(becas);
+        List<Beca> solucion = planificador.getSolucion();
+        int sueldoTotal = 0;
+        System.out.println("La combinacion de becas con mayor beneficio es el siguiente: ");
+        for (int i = 0; i < solucion.size(); i++) {
+        	int sueldo = solucion.get(i).getSalario()*(solucion.get(i).getMesFin()-solucion.get(i).getMesInicio());
+            System.out.println(solucion.get(i).toString());
+            System.out.println( sueldo + " Euros");
+            
+            sueldoTotal += sueldo;
         }
-
-        // Paso 2: Calcular el gasto óptimo y mostrarlo por pantalla
-        double gastoOptimo = calcularGastoOptimo(Becases, 12);
-        System.out.println("El gasto óptimo es: " + gastoOptimo);
+        System.out.println("\n Beneficio total a percibir: " + sueldoTotal + " euros");
+     
     }
-
-    public static List<Becas> leerArchivo(String nombreArchivo) {
-        // Implementación de la lectura del archivo de texto
-        // y creación de una lista de objetos Becas
-    }
-
-    public static double calcularGastoOptimo(List<Becas> Becases, int BecasesPorAno) {
-        // Implementación del método de backtracking para calcular el gasto óptimo
-    }
-
-    private static double calcularGastoOptimoRec(List<Becas> Becases, int BecasesPorAno, int BecasActual, int BecasesIncluidos, double gastoActual, double gastoOptimo) {
-        // Implementación del método recursivo para el algoritmo de backtracking
-    }
-
-    private static boolean esSolucion(List<Becas> Becases, int BecasesPorAno, int BecasActual, int BecasesIncluidos) {
-        // Implementación de la función para determinar si la solución actual es una solución válida
-    }
-
-    private static double calcularGasto(List<Becas> Becases) {
-        // Implementación del cálculo del gasto total de una solución
-    }
-
-    private static void imprimirSolucion(List<Becas> Becases) {
-        // Implementación de la función para imprimir por pantalla la solución encontrada
+    /**
+     * Metodo de lectura del fichero.
+     * @param nombreArchivo
+     * @return
+     */
+    public static List<Beca> leerFichero(String nombreArchivo) {    	
+    	List<Beca> listaBecas = new ArrayList<>();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
+            String linea;            
+			int tamanioLista = Integer.parseInt(br.readLine()); // Leemos la primera línea como tamaño de la lista
+			int contadorLineas = 0;			
+            if (tamanioLista > 0 ) { 
+	            while ((linea = br.readLine()) != null) {
+	                String[] campos = linea.split("\t"); // Separamos los campos por el caracter de tabulación
+	                int id = Integer.parseInt(campos[0]);
+	                int inicio = Integer.parseInt(campos[1]);
+	                int fin = Integer.parseInt(campos[2]);
+	                int monto = Integer.parseInt(campos[3]);
+	                // El intervalo de las becas no está dentro de los 12 meses
+	                if (( inicio > 0 && inicio < 12) && (fin > 0 && fin <= 12 )) {
+	                	try {
+		                	Beca beca = new Beca(id, inicio, fin, monto); // Creamos un objeto Beca con los campos correspondientes
+			                listaBecas.add(beca); // Añadimos la beca a la lista
+			                contadorLineas++;		                
+		                } catch  (NumberFormatException e) {
+		                	MiException.exSrtring();
+		                	System.out.println(e);
+		                	System.exit(0);
+		                }
+	                } else if ( inicio == fin ) {
+	                	System.out.println("El mes de inicio coincide con el mis de fin");
+	                	System.out.println("Revise el fichero de datos de entrada.");
+	                	System.exit(0);
+	            	} else {
+	                	System.out.println("El numero de meses no esta en el intervalo 1-12.");
+	                	System.out.println("Revise el fichero de datos de entrada.");
+	                	System.exit(0);
+	                }
+	            }
+            } else {
+            	MiException.exNumNegativo();
+            	System.exit(0);
+            }
+            br.close();
+            // Buscamos el nº de  lineas existente frente al encontrado.
+            if ( contadorLineas != tamanioLista ) {
+            	MiException.exTotalLines();
+            	System.exit(0);
+            }
+    	} catch (NumberFormatException ex) {
+    		MiException.exSrtring();
+        	System.out.println(ex);
+        	System.exit(0);
+    	}catch (IOException e) {
+    		System.out.println("Error al leer el fichero  " + e.getMessage());
+    	}
+    	return listaBecas;
     }
 }
 
+/* **********************************************************************
+ * 
+ * #####~##~~##~~####~~#####~#####~~######~######~~####~~##~~##~~####~
+ * ##~~~~~####~~##~~##~##~~~~##~~##~~~##~~~~~##~~~##~~##~###~##~##~~~~
+ * ####~~~~##~~~##~~~~~####~~#####~~~~##~~~~~##~~~##~~##~##~###~~####~
+ * ##~~~~~####~~##~~##~##~~~~##~~~~~~~##~~~~~##~~~##~~##~##~~##~~~~~##
+ * #####~##~~##~~####~~#####~##~~~~~~~##~~~######~~####~~##~~##~~####~
+ * 
+ * **********************************************************************
  */
 
+class MiException extends Exception {
+	/**
+	 * Implementacion de interfaz serializable. Las clases que implementan este interfaz son susceptibles de ser serializables (guardadas en disco)
+	 * Los atributos del objeto se convierten en cadenas de bytes y se guardan en el disco. Para leer un objeto, se leen las cadenas de bytes y se reconstruye
+	 * el objeto a partir de ellos.
+	 * @see Source: https://howtodoinjava.com/java/serialization/serialversionuid/
+	 */
+	private static final long serialVersionUID = 1L;	
+	/**
+	 * Mensaje de control de numeros negativos
+	 */
+	static void exNumNegativo() {
+		System.out.print("""
+				===================================================== \n
+				\t\t WARNING!!! \n 
+				Tamanio de becas invalida. \n
+				El numero introducido es cero o negativo. \n
+				Por favor, verifique el fichero DATOS.dat Y reinicie la ejecucion del programa
+				===================================================== \n
+				""");
+	}
+	/**
+	 * Mensaje de control de String introducido 
+	 */
+	public static void exSrtring() {
+		System.out.print("""
+				===================================================== \n
+				\t\t WARNING!!! \n 
+				Medida invalida. \n
+				Ha introducido un String, debe introducir solo numeros. \n
+				===================================================== \n
+				""");		
+	}
+	/**
+	 * Mensaje de control de numero de lineas introducido frente a los leídos en el fichero 
+	 */
+	public static void exTotalLines() {
+		System.out.print("""
+				===================================================== \n
+				\t\t WARNING!!! \n 
+				No coinciden el numero de lineas. \n
+				El nº lineas encontrado en el fichero VS nº el introducido en el fichero. \n
+				no coinciden. \n
+				REVISE EL FICHERO Y VUELVA A INTENTARLO DE NUEVO.
+				===================================================== \n
+				""");		
+	}
+}
