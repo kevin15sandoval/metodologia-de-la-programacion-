@@ -37,7 +37,7 @@ public class Main {
     /**
      * Metodo de lectura del fichero.
      * @param nombreArchivo
-     * @return
+     * @return listaBecas
      */
     public static List<Beca> leerFichero(String nombreArchivo) {    	
     	List<Beca> listaBecas = new ArrayList<>();

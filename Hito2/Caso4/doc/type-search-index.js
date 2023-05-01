@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"becasDeColaboracion","l":"Beca"},{"p":"becasDeColaboracion","l":"Main"},{"p":"becasDeColaboracion","l":"PlanificadorBecas"}];updateSearchResults();
