@@ -7,14 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+	/**
+	 * Main.
+	 * @param args
+	 */
     public static void main(String[] args) {
     	/* Fichero de entrada */
     	final String ArchivoBecas = "BECAS.dat";
     	/* Lectura del fichero */
-    	List<Beca> becas = new ArrayList<>(); // Lista con los datos leídos    	
+    	List<Beca> becas = new ArrayList<>(); // Lista con los datos leídos    
+    	// Leemos
     	becas = leerFichero(ArchivoBecas);
+    	// Planificamos las becas
         PlanificadorBecas planificador = new PlanificadorBecas(becas);
         List<Beca> solucion = planificador.getSolucion();
+        // Calculamos sueldo total anual y por beca
         int sueldoTotal = 0;
         System.out.println("La combinacion de becas con mayor beneficio es el siguiente: ");
         for (int i = 0; i < solucion.size(); i++) {
