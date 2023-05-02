@@ -84,7 +84,11 @@ public class Main {
             	MiException.exTotalLines();
             	System.exit(0);
             }
-    	} catch (NumberFormatException ex) {
+    	} catch (ArrayIndexOutOfBoundsException fIndex) {
+    		MiException.ArrayIndexOutOfBounds();
+        	System.out.println(fIndex);
+        	System.exit(0);
+    	}catch (NumberFormatException ex) {
     		MiException.exSrtring();
         	System.out.println(ex);
         	System.exit(0);
@@ -128,14 +132,29 @@ class MiException extends Exception {
 				""");
 	}
 	/**
-	 * Mensaje de control de String introducido 
+	 * Mensaje que se ejecuta cuando falta algun dato en el fichero
+	 */
+	public static void ArrayIndexOutOfBounds() {
+		System.out.print("""
+				===================================================== \n
+				\t\t WARNING!!! \n 
+				Entrada invalida. \n
+				Se ha encontrado una fallo en el fichero de entrada. \n
+				Revise los datos de entrada y vuelva a intentarlo de nuevo. \n
+				===================================================== \n
+				""");
+		
+	}
+	/**
+	 * Mensaje de control de String o floats introducidos 
 	 */
 	public static void exSrtring() {
 		System.out.print("""
 				===================================================== \n
 				\t\t WARNING!!! \n 
 				Medida invalida. \n
-				Ha introducido un String, debe introducir solo numeros. \n
+				Ha introducido un dato incoherente, debe introducir solo numeros enteros. \n
+				Revise los datos del fichero y vuelva a intentarlo de nuevo. \n
 				===================================================== \n
 				""");		
 	}
