@@ -93,7 +93,8 @@ public class Main {
         	System.out.println(ex);
         	System.exit(0);
     	}catch (IOException e) {
-    		System.out.println("Error al leer el fichero  " + e.getMessage());
+    		System.out.println("Error al leer el fichero  " + e.getMessage());    		
+        	System.exit(0);
     	}
     	return listaBecas;
     }
