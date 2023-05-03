@@ -139,6 +139,3 @@ public class PlanificadorBecas {
         return salarioTotal;
     }
 }
-
-
-
