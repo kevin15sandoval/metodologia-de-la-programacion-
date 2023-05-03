@@ -34,9 +34,9 @@ public class PlanificadorBecas {
      */
     //en este metodo es donde ya llevamos acabo el backtracking para encontrar la solucion 
     public void resolver(List<Beca> candidatos, int salarioActual) {//le pasamos la lista de las becas y el salario actual
-    	//Ahora verificamos si los candidatos actuales y el salario actual forman una solución. 
-    	//Si es así, se llama al método procesarSolucion
-    	if (esSolucion(candidatos, salarioActual)) {
+    	//Ahora verificamos si los candidatos actuales y el salario actual forman una soluciï¿½n. 
+    	//Si es asï¿½, se llama al mï¿½todo procesarSolucion
+    	if (esSolucion(salarioActual)) {
             procesarSolucion(candidatos, salarioActual);
             //si no es el caso entramos al else
         } else {
@@ -44,7 +44,7 @@ public class PlanificadorBecas {
                 Beca beca = becas.get(i);//tomamos un beca y la guardamos en la varible beca 
                 //para comprobar el siguiente if llamamos a los metodos es valido y sesolapa 
                 if (esValido(beca, candidatos) && !seSolapa(beca, candidatos)) {//si es valida y no se solapa
-                    candidatos.add(beca);//añadimos a la lista candidatos que corresponde a nuestra lista beca 
+                    candidatos.add(beca);//aï¿½adimos a la lista candidatos que corresponde a nuestra lista beca 
                     resolver(candidatos, salarioActual + beca.getSalario());//llamaos el metodo de nuevo para realizar la recursividad con el salario y las becas actualziadas
                     candidatos.remove(beca);//eliminamos esa beca de la lista para probar con otras becas y no caer en la misma
                 }
@@ -87,9 +87,9 @@ public class PlanificadorBecas {
      * @param salarioActual
      * @return salarioActual > salarioMaximo
      */
-    //comprobar si la asignación actual es una solución. Devuelve verdadero si el salario actual es mayor 
-    //que el salario máximo y falso en caso contrario.
-    public boolean esSolucion(List<Beca> candidatos, int salarioActual) {
+    //comprobar si la asignaciï¿½n actual es una soluciï¿½n. Devuelve verdadero si el salario actual es mayor 
+    //que el salario mï¿½ximo y falso en caso contrario.
+    public boolean esSolucion(int salarioActual) {
     	return salarioActual > salarioMaximo;
     }
 	/**
@@ -101,7 +101,7 @@ public class PlanificadorBecas {
         solucionActual = new ArrayList<>(candidatos);//creamos una nueva lista con una copia de lista de becas candidatas
         salarioMaximo = salarioActual;
         salarioTotal += salarioActual; // Suma el salario actual al salario total existente
-        //Si el salario actual es mayor que el salario máximo, se actualiza el valor
+        //Si el salario actual es mayor que el salario mï¿½ximo, se actualiza el valor
         if (salarioActual > salarioMaximo) {
         	salarioMaximo = salarioActual;
         }
