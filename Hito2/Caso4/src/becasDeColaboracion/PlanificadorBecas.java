@@ -3,11 +3,12 @@ package becasDeColaboracion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanificadorBecas {	
-    private List<Beca> becas;
-    private List<Beca> solucionActual;
-    private int salarioMaximo;
-    private int salarioTotal;
+public class PlanificadorBecas {
+	//creamos las 
+    private List<Beca> becas; //creamos una lista becas que es donde nos mostrara la lista de las becas disponibles 
+    private List<Beca> solucionActual;//otra lista de las becas donde guardaremos la solucion actual mas conveniente
+    private int salarioMaximo;//el salaraio maximo encontrado hasat el momento
+    private int salarioTotal; // el total de todas las becas asignadas 
     /**
      * Constructor del planificador de becas
      * @param becas
@@ -22,25 +23,30 @@ public class PlanificadorBecas {
      * Devuelve la solucion.
      * @return solucion
      */
-    public List<Beca> getSolucion() {
-        resolver(new ArrayList<Beca>(), 0);
-        return solucionActual;
+    public List<Beca> getSolucion() {//creamos un metodo de tipo lista que nos devolvera las becas asignadas
+        resolver(new ArrayList<Beca>(), 0);//llamos al metodo resolver 
+        return solucionActual;//devolvemos la solucion actual, el cual como declaramoses un array de las becas asignadas
     }
     /**
      * Busca la solucion de la lista disponible
      * @param candidatos
      * @param salarioActual
      */
-    public void resolver(List<Beca> candidatos, int salarioActual) {
-        if (esSolucion(candidatos, salarioActual)) {
+    //en este metodo es donde ya llevamos acabo el backtracking para encontrar la solucion 
+    public void resolver(List<Beca> candidatos, int salarioActual) {//le pasamos la lista de las becas y el salario actual
+    	//Ahora verificamos si los candidatos actuales y el salario actual forman una solución. 
+    	//Si es así, se llama al método procesarSolucion
+    	if (esSolucion(candidatos, salarioActual)) {
             procesarSolucion(candidatos, salarioActual);
+            //si no es el caso entramos al else
         } else {
-            for (int i = 0; i < becas.size(); i++) {
-                Beca beca = becas.get(i);
-                if (esValido(beca, candidatos) && !seSolapa(beca, candidatos)) {
-                    candidatos.add(beca);
-                    resolver(candidatos, salarioActual + beca.getSalario());
-                    candidatos.remove(beca);
+            for (int i = 0; i < becas.size(); i++) {//iteramos sobre las becas disponibles 
+                Beca beca = becas.get(i);//tomamos un beca y la guardamos en la varible beca 
+                //para comprobar el siguiente if llamamos a los metodos es valido y sesolapa 
+                if (esValido(beca, candidatos) && !seSolapa(beca, candidatos)) {//si es valida y no se solapa
+                    candidatos.add(beca);//añadimos a la lista candidatos que corresponde a nuestra lista beca 
+                    resolver(candidatos, salarioActual + beca.getSalario());//llamaos el metodo de nuevo para realizar la recursividad con el salario y las becas actualziadas
+                    candidatos.remove(beca);//eliminamos esa beca de la lista para probar con otras becas y no caer en la misma
                 }
             }
         }
@@ -53,19 +59,22 @@ public class PlanificadorBecas {
      * @return boolean
      */
     public boolean seSolapa(Beca beca, List<Beca> candidatos) {
+    	//obtenemos el mes de inicio y fin de la beca 
         int mesInicioBeca = beca.getMesInicio();
         int mesFinBeca = beca.getMesFin();
 
-        for (Beca candidata : candidatos) {
+        for (Beca candidata : candidatos) {//recorremos las becas candidatas que tenemos
+        	//inicializamos dos nuevas variables pero con el mes de inicio y fin de la beca candidata 
             int mesInicioCandidata = candidata.getMesInicio();
             int mesFinCandidata = candidata.getMesFin();
-
+            
+            //comprobamos si las becas no chocan con su inicio y fin
             if (mesInicioBeca >= mesInicioCandidata && mesInicioBeca <= mesFinCandidata) {
-                return true;
+                return true;//si solapan pasamos true
             }
 
             if (mesFinBeca >= mesInicioCandidata && mesFinBeca <= mesFinCandidata) {
-                return true;
+                return true;//si solapan pasamos true
             }
         }
 
@@ -78,6 +87,8 @@ public class PlanificadorBecas {
      * @param salarioActual
      * @return salarioActual > salarioMaximo
      */
+    //comprobar si la asignación actual es una solución. Devuelve verdadero si el salario actual es mayor 
+    //que el salario máximo y falso en caso contrario.
     public boolean esSolucion(List<Beca> candidatos, int salarioActual) {
     	return salarioActual > salarioMaximo;
     }
@@ -87,9 +98,10 @@ public class PlanificadorBecas {
 	 * @param salarioActual
 	 */
     public void procesarSolucion(List<Beca> candidatos, int salarioActual) {
-        solucionActual = new ArrayList<>(candidatos);
+        solucionActual = new ArrayList<>(candidatos);//creamos una nueva lista con una copia de lista de becas candidatas
         salarioMaximo = salarioActual;
         salarioTotal += salarioActual; // Suma el salario actual al salario total existente
+        //Si el salario actual es mayor que el salario máximo, se actualiza el valor
         if (salarioActual > salarioMaximo) {
         	salarioMaximo = salarioActual;
         }
@@ -102,12 +114,15 @@ public class PlanificadorBecas {
      * @return boolean
      */
     public boolean esValido(Beca beca, List<Beca> candidatos) {
-        int mesInicioBeca = beca.getMesInicio();
+    	//tenemos los meses de inicio y fin 
+    	int mesInicioBeca = beca.getMesInicio();
         int mesFinBeca = beca.getMesFin();
 
-        for (Beca candidata : candidatos) {
+        for (Beca candidata : candidatos) {//recorremos la lista de candidatos
+        	//tomamos los meses de inicio y fin de la beca candidata 
             int mesInicioCandidata = candidata.getMesInicio();
-            int mesFinCandidata = candidata.getMesFin();            
+            int mesFinCandidata = candidata.getMesFin();
+            //comprobamos si no es valida ya siendo por una u otra
             if ((mesInicioBeca >= mesInicioCandidata && mesInicioBeca <= mesFinCandidata) ||
                 (mesFinBeca >= mesInicioCandidata && mesFinBeca <= mesFinCandidata) ) {
                 return false;

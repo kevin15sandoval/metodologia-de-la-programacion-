@@ -20,14 +20,14 @@ public class Dominio {
 	public static int[][] solado(int metros, int[] tamaniosBaldosas) {
 	    int[][] superficie = new int[metros][metros]; // Creamos una matriz para represantar la superficie del suelo
 	    boolean[][] baldosasColocadas = new boolean[metros][metros]; // Creamos una matrix para llevar el registro  de las baldosas colocadas
-	    int fila = 0; // Registro de la ultima fila en la que se colocó una baldosa
+	    int fila = 0; // Registro de la ultima fila en la que se coloca una baldosa
 	    Arrays.sort(tamaniosBaldosas); // Ordena de mayor a menor
-	    for (int i = tamaniosBaldosas.length - 1; i >= 0; i--) { // Iteración sobre los tamaños de las baldosas de mayor a menor
-	        int tamanio = tamaniosBaldosas[i]; // Tamaño de la baldosa actual
-	        while (fila < metros) { // Se ejecuta mientras exista un espacio disponible en la superficie del solar
-	            boolean disponible = false; // Var. para indicar si se encontro un espacio disponible para la baldosa actual
-	            for (int filas = 0; filas < metros - tamanio + 1 && !disponible; filas++) { // Filas de la superficie
-	                for (int columnas = 0; columnas < metros - tamanio + 1 && !disponible; columnas++) { // Columnas de la superficie
+	    for (int i = tamaniosBaldosas.length - 1; i >= 0; i--) { // Iterar sobre los tamaanos de las baldosas de mayor a menor
+	        int tamanio = tamaniosBaldosas[i]; // Tomamos un entero para ir almacenadno el valor de los baldosa en ese momento
+	        while (fila < metros) { // Colocamos un bucle while el cual, se ejecuta mientras exista un espacio disponible en la superficie del solar
+	            boolean disponible = false; // establecemos un boolean para indicar si se encontro un espacio disponible para la baldosa actual
+	            for (int filas = 0; filas < metros - tamanio + 1 && !disponible; filas++) { // Recorremos las filas de la superficie
+	                for (int columnas = 0; columnas < metros - tamanio + 1 && !disponible; columnas++) { // Recorremos las columnas de la superficie
 	                    boolean puedeColocar = true; // Se puede colocar la baldosa en la posicion actual
 	                    for (int m = filas; m < filas + tamanio; m++) { // Filas que ocupa la baldosa
 	                        for (int n = columnas; n < columnas + tamanio; n++) { // Columnas que ocupa la baldosa
