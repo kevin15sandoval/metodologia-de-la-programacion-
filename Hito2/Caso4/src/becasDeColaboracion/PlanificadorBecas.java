@@ -36,7 +36,7 @@ public class PlanificadorBecas {
     public void resolver(List<Beca> candidatos, int salarioActual) {//le pasamos la lista de las becas y el salario actual
     	//Ahora verificamos si los candidatos actuales y el salario actual forman una soluci�n. 
     	//Si es as�, se llama al m�todo procesarSolucion
-    	if (esSolucion(candidatos, salarioActual)) {
+    	if (esSolucion(salarioActual)) {
             procesarSolucion(candidatos, salarioActual);
             //si no es el caso entramos al else
         } else {
@@ -89,7 +89,7 @@ public class PlanificadorBecas {
      */
     //comprobar si la asignaci�n actual es una soluci�n. Devuelve verdadero si el salario actual es mayor 
     //que el salario m�ximo y falso en caso contrario.
-    public boolean esSolucion(List<Beca> candidatos, int salarioActual) {
+    public boolean esSolucion(int salarioActual) {
     	return salarioActual > salarioMaximo;
     }
 	/**
@@ -139,6 +139,3 @@ public class PlanificadorBecas {
         return salarioTotal;
     }
 }
-
-
-
