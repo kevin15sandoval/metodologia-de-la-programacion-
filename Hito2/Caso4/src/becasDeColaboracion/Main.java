@@ -27,8 +27,7 @@ public class Main {
         for (int i = 0; i < solucion.size(); i++) {
         	int sueldo = solucion.get(i).getSalario()*(solucion.get(i).getMesFin()-solucion.get(i).getMesInicio());
             System.out.println(solucion.get(i).toString());
-            System.out.println( sueldo + " Euros");
-            
+            System.out.println( sueldo + " Euros");            
             sueldoTotal += sueldo;
         }
         System.out.println("\n Beneficio total a percibir: " + sueldoTotal + " euros");
@@ -45,14 +44,29 @@ public class Main {
             BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
             String linea;            
 			int tamanioLista = Integer.parseInt(br.readLine()); // Leemos la primera línea como tamaño de la lista
-			int contadorLineas = 0;			
+			int contadorLineas = 0;
+
+			int[] ids = new int[tamanioLista];
+			int contadorIds = 0;
+
             if (tamanioLista > 0 ) { 
 	            while ((linea = br.readLine()) != null) {
 	                String[] campos = linea.split("\t"); // Separamos los campos por el caracter de tabulación
 	                int id = Integer.parseInt(campos[0]);
+
+					ids[contadorIds] = id;
+					contadorIds++;
+
 	                int inicio = Integer.parseInt(campos[1]);
 	                int fin = Integer.parseInt(campos[2]);
 	                int monto = Integer.parseInt(campos[3]);
+
+					// Comprobar que el indice de la beca no se repite
+					if (listaBecas.contains(id)) {
+	                	System.out.println("El indice de la beca se repite.");
+	                	System.out.println("Revise el fichero de datos de entrada.");
+	                	System.exit(0);
+	                }
 	                // El intervalo de las becas no está dentro de los 12 meses
 	                if (( inicio > 0 && inicio < 12) && (fin > 0 && fin <= 12 )) {
 	                	try {
@@ -74,6 +88,17 @@ public class Main {
 	                	System.exit(0);
 	                }
 	            }
+
+				// Comprobar que el indice de la beca no se repite
+				for (int i = 0; i < ids.length; i++) {
+					for (int j = 0; j < ids.length; j++) {
+						if (ids[i] == ids[j] && i != j) {
+							System.out.println("El indice de la beca se repite.");
+							System.out.println("Revise el fichero de datos de entrada.");
+							System.exit(0);
+						}
+					}
+				}
             } else {
             	MiException.exNumNegativo();
             	System.exit(0);
@@ -100,15 +125,15 @@ public class Main {
     }
 }
 
-/* **********************************************************************
+/* ************************
  * 
- * #####~##~~##~~####~~#####~#####~~######~######~~####~~##~~##~~####~
- * ##~~~~~####~~##~~##~##~~~~##~~##~~~##~~~~~##~~~##~~##~###~##~##~~~~
- * ####~~~~##~~~##~~~~~####~~#####~~~~##~~~~~##~~~##~~##~##~###~~####~
- * ##~~~~~####~~##~~##~##~~~~##~~~~~~~##~~~~~##~~~##~~##~##~~##~~~~~##
- * #####~##~~##~~####~~#####~##~~~~~~~##~~~######~~####~~##~~##~~####~
+ * #######################~############~############
+ * ##~~##########~####~##~##~###########~~
+ * ####~##~##~#########~##~~##~#############
+ * ##~~##########~##~~##~~##~######~##~~##
+ * ####################~~##~##################
  * 
- * **********************************************************************
+ * ************************
  */
 
 class MiException extends Exception {

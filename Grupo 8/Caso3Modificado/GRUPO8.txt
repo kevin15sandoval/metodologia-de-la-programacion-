@@ -1,0 +1,77 @@
+PRUEBA 1
+
+¿De que tamanio en m2 es la superficie?
+8
+Introduzca el numero de baldosas disponibles
+3
+Introduzca el tamanio de la baldosa 1
+2
+Introduzca el tamanio de la baldosa 2
+5
+Introduzca el tamanio de la baldosa 3
+3
+Usted dispone de 3 tamanios de baldosas:
+1) 2m2
+ 2) 5m2
+ 3) 3m2
+ 
+Primera posicion: [7,6]
+ultima posicion: [8,7]
+Tamaño de baldosa: 2x2
+5 5 5 5 5 3 3 3 
+5 5 5 5 5 3 3 3 
+5 5 5 5 5 3 3 3 
+5 5 5 5 5 3 3 3 
+5 5 5 5 5 3 3 3 
+3 3 3 2 2 3 3 3 
+3 3 3 2 2 2 2 0 
+3 3 3 0 0 2 2 0 
+
+
+PRUEBA 2
+
+¿De que tamanio en m2 es la superficie?
+24
+Introduzca el numero de baldosas disponibles
+4
+Introduzca el tamanio de la baldosa 1
+4
+Introduzca el tamanio de la baldosa 2
+1
+Introduzca el tamanio de la baldosa 3
+9
+Introduzca el tamanio de la baldosa 4
+2
+Usted dispone de 4 tamanios de baldosas:
+1) 4m2
+ 2) 1m2
+ 3) 9m2
+ 4) 2m2
+ 
+Primera posicion: [23,15]
+ultima posicion: [24,16]
+Tamaño de baldosa: 2x2
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 4 4 4 4 2 2 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 2 4 4 4 4 2 2 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 2 4 4 4 4 2 2 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 4 4 4 4 4 4 4 4 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 4 4 4 4 4 4 4 4 
